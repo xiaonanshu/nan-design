@@ -28,20 +28,15 @@ importers:
         specifier: ^5.4.10
         version: 5.4.10
 
-  docs: {}
-
-  packages/demo:
+  demo:
     dependencies:
       '@nan-design/react':
         specifier: workspace:^
-        version: link:../nan-design
+        version: link:../packages/nan-design
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0
         version: 9.13.0
-      '@vitejs/plugin-react':
-        specifier: ^4.3.3
-        version: 4.3.3(vite@5.4.10)
       eslint:
         specifier: ^9.13.0
         version: 9.13.0
@@ -60,6 +55,8 @@ importers:
       typescript-eslint:
         specifier: ^8.10.0
         version: 8.11.0(eslint@9.13.0)(typescript@5.6.3)
+
+  docs: {}
 
   packages/nan-design:
     dependencies:
