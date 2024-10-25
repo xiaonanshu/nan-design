@@ -1,0 +1,39 @@
+{
+  "name": "@nan-design/react",
+  "version": "0.0.0",
+  "description": "nan-design react component library",
+  "keywords": [
+    "react",
+    "ui",
+    "component library"
+  ],
+  "author": "南了个南",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZSmileL/nan-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZSmileL/nan-design/issues"
+  },
+  "scripts": {
+    "build": "echo build",
+    "test": "echo test"
+  },
+  "main": "",
+  "module": "",
+  "types": "",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@nan-design/shared": "workspace:^"
+  }
+}
