@@ -1,7 +1,7 @@
-import lodash from 'lodash'
+import lodash from 'lodash';
 
-function useLodash(){
+function useLodash() {
     return lodash;
 }
 
-export {useLodash};
+export { useLodash };

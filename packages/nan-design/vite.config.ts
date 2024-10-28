@@ -1,14 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig({
     // 增加插件的使用
-    plugins: [react()],
+    plugins: [
+        react(),
+        eslintPlugin({
+            include: ['src/**/*.js', 'src/**/*.tsx', 'src/**/*.ts'], // 指定需要检查的文件
+            exclude: ['node_modules/**', 'dist/**'], // 指定不需要检查的文件
+            fix: true, // 是否自动修复
+            cache: false // 是否启用缓存
+        })
+    ],
     build: {
         lib: {
             entry: './src/index.ts',
             name: 'nanDesign',
-            fileName: 'nan-design',
+            fileName: 'nan-design'
         },
         minify: false,
         rollupOptions: {
@@ -17,7 +26,7 @@ export default defineConfig({
                 /@nan-design.*/,
                 'react',
                 'react-dom'
-            ],
-        },
+            ]
+        }
     }
-})
+});

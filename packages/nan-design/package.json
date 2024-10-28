@@ -16,8 +16,7 @@
     "url": "https://github.com/ZSmileL/nan-design/issues"
   },
   "scripts": {
-    "build": "echo build",
-    "test": "echo test"
+    "build": "vite build"
   },
   "main": "",
   "module": "",

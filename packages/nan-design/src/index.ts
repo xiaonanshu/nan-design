@@ -1,2 +1,2 @@
 // 总出口
-export * from './components/button'
+export * from './components/button';
