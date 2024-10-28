@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface ButtonBaseProps {
-    disabled: boolean;
+    disabled?: boolean;
     children?: React.ReactNode;
-    onClick: React.MouseEventHandler<HTMLElement>;
+    onClick?: React.MouseEventHandler<HTMLElement>;
 }
