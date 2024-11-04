@@ -1,0 +1,12 @@
+[
+  {
+    "text": "开发",
+    "link": "/hello/",
+    "activeMatch": "/hello/"
+  },
+  {
+    "text": "组件",
+    "link": "/components/mds/Button",
+    "activeMatch": "/components/"
+  }
+]

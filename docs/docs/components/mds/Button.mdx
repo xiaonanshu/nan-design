@@ -1,0 +1,141 @@
+# Button 按钮
+## 按钮类型
+按钮有三种类型：主要按钮、次要按钮、线框按钮。默认为主要按钮
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    return (
+    <Flex>
+    <Button type='primary'>主要按钮</Button>
+    <Button type='secondary'>次要按钮</Button>
+    <Button type='outline'>线框按钮</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 按钮大小
+按钮大小有四种：s 、 m 、 l 、 xl；默认大小为l。高度分别对应：24px 、 32px 、 36px 、 48px
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    return (
+    <Flex>
+    <Button size='s'>s大小</Button>
+    <Button size='m'>m大小</Button>
+    <Button size='l'>l大小</Button>
+    <Button size='xl'>xl大小</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 按钮形状
+按钮分为默认形状、全圆角(round)、圆形(circle)、方形(square)四种形状
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    return (
+    <Flex>
+    <Button>默认</Button>
+    <Button shape='round'>全圆角</Button>
+    <Button shape='circle'>+</Button>
+    <Button shape='square'>+</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 按钮状态
+按钮有主要状态(primary)、成功状态(success)、警告状态(warning)、危险状态(danger) 四种状态
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    return (
+    <Flex>
+    <Button>default</Button>
+    <Button status='primary'>primary</Button>
+    <Button status='success'>success</Button>
+    <Button status='warning'>warning</Button>
+    <Button status='danger'>danger</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 图标
+可在按钮中插入图标
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+import {DeleteOutlined, PlusOutlined} from '@ant-design/icons';
+
+function App(){
+    return (
+    <Flex>
+    <Button icon={<PlusOutlined/>}>新增</Button>
+    <Button icon={<DeleteOutlined/>} status='danger'>删除</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 不可用按钮
+添加 disabled 属性即可让按钮处于不可用状态
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+import {DeleteOutlined} from '@ant-design/icons';
+
+function App(){
+    return (
+    <Flex>
+    <Button disabled>禁用</Button>
+    <Button icon={<DeleteOutlined/>} status='danger' disabled>删除</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 加载中状态
+通过设置 loading 可以让按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    
+    return (
+    <Flex>
+    <Button loading={true} loadingText='加载中' onClick={ ()=>{
+        alert('1111');
+    } }>加载完成</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## 点击事件
+通过设置 onClick 可以为按钮设置点击事件。
+
+``` tsx
+import {Button, Flex} from '@nan-design/react'
+
+function App(){
+    return (
+    <Flex>
+    <Button onClick = {()=>{ alert('111') }}>alert</Button>
+    </Flex>)
+}
+export default App;
+```
+
+## API

@@ -1,12 +1,19 @@
 {
   "name": "@nan-design/docs",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "echo dev",
-    "build": "echo build"
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@nan-design/react": "workspace:^",
+    "rspress": "^1.32.0"
   },
   "devDependencies": {
+    "@rspress/plugin-preview": "^1.35.3",
+    "@types/node": "^16"
   }
 }
