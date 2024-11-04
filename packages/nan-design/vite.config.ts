@@ -13,6 +13,14 @@ export default defineConfig({
             cache: false // 是否启用缓存
         })
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: '@use  "./src/styles/index";',
+                api: 'modern-compiler'
+            }
+        }
+    },
     build: {
         lib: {
             entry: './src/index.ts',

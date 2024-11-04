@@ -1,0 +1,134 @@
+@use '../color/index.scss' as color;
+@use '../tokens/color.scss' as tokenColor;
+
+:root {
+    // ------ functional color ------
+    --nan-primary-color: #{tokenColor.$primary-color};
+    --nan-danger-color: #{tokenColor.$danger-color};
+    --nan-success-color: #{tokenColor.$success-color};
+    --nan-warning-color: #{tokenColor.$warning-color};
+    --nan-link-color: #{tokenColor.$link-color};
+
+    // primary
+    --nan-primary-color-1: #{tokenColor.$primary-color-1};
+    --nan-primary-color-2: #{tokenColor.$primary-color-2};
+    --nan-primary-color-3: #{tokenColor.$primary-color-3};
+    --nan-primary-color-4: #{tokenColor.$primary-color-4};
+    --nan-primary-color-5: #{tokenColor.$primary-color-5};
+    --nan-primary-color-6: #{tokenColor.$primary-color-6};
+    --nan-primary-color-7: #{tokenColor.$primary-color-7};
+    --nan-primary-color-8: #{tokenColor.$primary-color-8};
+    --nan-primary-color-9: #{tokenColor.$primary-color-9};
+    --nan-primary-color-10: #{tokenColor.$primary-color-10};
+
+    // success
+    --nan-success-color-1: #{tokenColor.$success-color-1};
+    --nan-success-color-2: #{tokenColor.$success-color-2};
+    --nan-success-color-3: #{tokenColor.$success-color-3};
+    --nan-success-color-4: #{tokenColor.$success-color-4};
+    --nan-success-color-5: #{tokenColor.$success-color-5};
+    --nan-success-color-6: #{tokenColor.$success-color-6};
+    --nan-success-color-7: #{tokenColor.$success-color-7};
+    --nan-success-color-8: #{tokenColor.$success-color-8};
+    --nan-success-color-9: #{tokenColor.$success-color-9};
+    --nan-success-color-10: #{tokenColor.$success-color-10};
+
+    // danger
+    --nan-danger-color-1: #{tokenColor.$danger-color-1};
+    --nan-danger-color-2: #{tokenColor.$danger-color-2};
+    --nan-danger-color-3: #{tokenColor.$danger-color-3};
+    --nan-danger-color-4: #{tokenColor.$danger-color-4};
+    --nan-danger-color-5: #{tokenColor.$danger-color-5};
+    --nan-danger-color-6: #{tokenColor.$danger-color-6};
+    --nan-danger-color-7: #{tokenColor.$danger-color-7};
+    --nan-danger-color-8: #{tokenColor.$danger-color-8};
+    --nan-danger-color-9: #{tokenColor.$danger-color-9};
+    --nan-danger-color-10: #{tokenColor.$danger-color-10};
+
+    // warning
+    --nan-warning-color-1: #{tokenColor.$warning-color-1};
+    --nan-warning-color-2: #{tokenColor.$warning-color-2};
+    --nan-warning-color-3: #{tokenColor.$warning-color-3};
+    --nan-warning-color-4: #{tokenColor.$warning-color-4};
+    --nan-warning-color-5: #{tokenColor.$warning-color-5};
+    --nan-warning-color-6: #{tokenColor.$warning-color-6};
+    --nan-warning-color-7: #{tokenColor.$warning-color-7};
+    --nan-warning-color-8: #{tokenColor.$warning-color-8};
+    --nan-warning-color-9: #{tokenColor.$warning-color-9};
+    --nan-warning-color-10: #{tokenColor.$warning-color-10};
+
+    // ------ text size ------
+    --nan-font-size-ss: 12px;
+    --nan-font-size-s: 14px;
+    --nan-font-size-m: 16px;
+    --nan-font-size-l: 18px;
+    --nan-font-size-xl: 24px;
+    --nan-font-size-2xl: 32px;
+    --nan-font-size-3xl: 40px;
+
+    // ------ text line height ------
+    --nan-line-height-ss: 18px;
+    --nan-line-height-s: 22px;
+    --nan-line-height-m: 24px;
+    --nan-line-height-l: 26px;
+    --nan-line-height-xl: 36px;
+    --nan-line-height-2xl: 46px;
+    --nan-line-height-3xl: 50px;
+}
+
+:root,
+[nan-theme='light'] {
+    // base color
+    $base-primary: color.$color-blue;
+    $base-danger: color.$color-red;
+    $base-success: color.$color-green;
+    $base-warning: color.$color-yellow;
+    $base-link: #1890ff;
+
+    // bg color
+    $color-bg-1: color.$color-white;
+    $color-bg-2: color-mix(in srgb, #fff, color.$color-gray 3.6%);
+    $color-bg-3: color-mix(in srgb, #fff, color.$color-gray 6.8%);
+    $color-bg-4: color-mix(in srgb, #fff, color.$color-gray 9.4%);
+
+    // $color-bg-2: #e8e9eb;
+    // $color-bg-3: #f0f0f1;
+    // $color-bg-4: #f6f6f8;
+
+    // color
+    --nan-primary: #{color.hex2rgb($base-primary)};
+    --nan-danger: #{color.hex2rgb($base-danger)};
+    --nan-success: #{color.hex2rgb($base-success)};
+    --nan-warning: #{color.hex2rgb($base-warning)};
+    --nan-link: #{color.hex2rgb($base-link)};
+
+    // ------ neutral color ------
+    --nan-neutral-color: #{color.$color-gray};
+    --nan-neutral-color-1: #{color.$color-gray-1};
+    --nan-neutral-color-2: #{color.$color-gray-2};
+    --nan-neutral-color-3: #{color.$color-gray-3};
+    --nan-neutral-color-4: #{color.$color-gray-4};
+    --nan-neutral-color-5: #{color.$color-gray-5};
+    --nan-neutral-color-6: #{color.$color-gray-6};
+    --nan-neutral-color-7: #{color.$color-gray-7};
+    --nan-neutral-color-8: #{color.$color-gray-8};
+    --nan-neutral-color-9: #{color.$color-gray-9};
+    --nan-neutral-color-10: #{color.$color-gray-10};
+
+    // ------ background color ------
+    --nan-background-color-1: #{$color-bg-1};
+    --nan-background-color-2: #{$color-bg-2};
+    --nan-background-color-3: #{$color-bg-3};
+    --nan-background-color-4: #{$color-bg-4};
+
+    // ------ line color ------
+    --nan-line-color-1: #{color.$color-gray-1};
+    --nan-line-color-2: #{color.$color-gray-3};
+    --nan-line-color-3: #{color.$color-gray-4};
+
+    // ------ text color ------
+    --nan-text-color-1: #{color.$color-gray-10};
+    --nan-text-color-2: #{color.$color-gray-8};
+    --nan-text-color-3: #{color.$color-gray-6};
+    --nan-text-color-4: #{color.$color-gray-5};
+}

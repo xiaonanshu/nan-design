@@ -1,0 +1,94 @@
+$nan-primary: var(--nan-primary);
+$nan-danger: var(--nan-danger);
+$nan-success: var(--nan-success);
+$nan-warning: var(--nan-warning);
+$nan-link: var(--nan-link);
+
+// ------------ neutral color ------------
+$neutral-color: var(--nan-neutral-color);
+$neutral-color-1: var(--nan-neutral-color-1);
+$neutral-color-2: var(--nan-neutral-color-2);
+$neutral-color-3: var(--nan-neutral-color-3);
+$neutral-color-4: var(--nan-neutral-color-4);
+$neutral-color-5: var(--nan-neutral-color-5);
+$neutral-color-6: var(--nan-neutral-color-6);
+$neutral-color-7: var(--nan-neutral-color-7);
+$neutral-color-8: var(--nan-neutral-color-8);
+$neutral-color-9: var(--nan-neutral-color-9);
+$neutral-color-10: var(--nan-neutral-color-10);
+
+// ------------ functional color ------------
+$primary-color: rgb($nan-primary);
+$danger-color: rgb($nan-danger);
+$success-color: rgb($nan-success);
+$warning-color: rgb($nan-warning);
+$link-color: rgb($nan-link);
+
+// primary
+$primary-color-1: rgba($nan-primary, 0.08);
+$primary-color-2: rgba($nan-primary, 0.12);
+$primary-color-3: rgba($nan-primary, 0.16);
+$primary-color-4: rgba($nan-primary, 0.24);
+$primary-color-5: rgba($nan-primary, 0.32);
+$primary-color-6: color-mix(in srgb, $primary-color, #fff 12%);
+$primary-color-7: $primary-color;
+$primary-color-8: color-mix(in srgb, $primary-color, #000 8%);
+$primary-color-9: color-mix(in srgb, $primary-color, #000 16%);
+$primary-color-10: color-mix(in srgb, $primary-color, #000 32%);
+
+// success
+$success-color-1: rgba($nan-success, 0.08);
+$success-color-2: rgba($nan-success, 0.12);
+$success-color-3: rgba($nan-success, 0.16);
+$success-color-4: rgba($nan-success, 0.24);
+$success-color-5: rgba($nan-success, 0.32);
+$success-color-6: color-mix(in srgb, $success-color, #fff 12%);
+$success-color-7: $success-color;
+$success-color-8: color-mix(in srgb, $success-color, #000 8%);
+$success-color-9: color-mix(in srgb, $success-color, #000 16%);
+$success-color-10: color-mix(in srgb, $success-color, #000 32%);
+
+// danger
+$danger-color-1: rgba($nan-danger, 0.08);
+$danger-color-2: rgba($nan-danger, 0.12);
+$danger-color-3: rgba($nan-danger, 0.16);
+$danger-color-4: rgba($nan-danger, 0.24);
+$danger-color-5: rgba($nan-danger, 0.32);
+$danger-color-6: color-mix(in srgb, $danger-color, #fff 12%);
+$danger-color-7: $danger-color;
+$danger-color-8: color-mix(in srgb, $danger-color, #000 8%);
+$danger-color-9: color-mix(in srgb, $danger-color, #000 16%);
+$danger-color-10: color-mix(in srgb, $danger-color, #000 32%);
+
+// warning
+$warning-color-1: rgba($nan-warning, 0.08);
+$warning-color-2: rgba($nan-warning, 0.12);
+$warning-color-3: rgba($nan-warning, 0.16);
+$warning-color-4: rgba($nan-warning, 0.24);
+$warning-color-5: rgba($nan-warning, 0.32);
+$warning-color-6: color-mix(in srgb, $warning-color, #fff 12%);
+$warning-color-7: $warning-color;
+$warning-color-8: color-mix(in srgb, $warning-color, #000 8%);
+$warning-color-9: color-mix(in srgb, $warning-color, #000 16%);
+$warning-color-10: color-mix(in srgb, $warning-color, #000 32%);
+
+// ------------ background color ------------
+$background-color-1: var(--nan-background-color-1);
+$background-color-2: var(--nan-background-color-2);
+$background-color-3: var(--nan-background-color-3);
+$background-color-4: var(--nan-background-color-4);
+$background-color-l: $background-color-1;
+$background-color-m: $background-color-2;
+$background-color-s: $background-color-3;
+$background-color-ss: $background-color-4;
+
+// ------------ text color ------------
+$text-color-l: var(--nan-text-color-1);
+$text-color-m: var(--nan-text-color-2);
+$text-color-s: var(--nan-text-color-3);
+$text-color-ss: var(--nan-text-color-4);
+
+// ------------ line color ------------
+$line-color-s: var(--nan-line-color-1);
+$line-color-m: var(--nan-line-color-2);
+$line-color-l: var(--nan-line-color-3);
