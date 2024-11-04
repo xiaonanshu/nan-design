@@ -1,0 +1,79 @@
+@use 'variables.scss' as variables;
+@use '../../../styles/tokens/corner.scss' as corner;
+@use 'mixin.scss' as mixin;
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.nan-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    outline: none;
+
+    &--round {
+        border-radius: corner.$shape-corner-extra-large !important;
+    }
+
+    &--circle {
+        padding: 0 !important;
+        border-radius: corner.$shape-corner-extra-large !important;
+    }
+
+    &--square {
+        padding: 0 !important;
+    }
+
+    &--disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+    }
+
+    &--loading {
+        pointer-events: none; // 元素不成为鼠标事件的target
+        cursor: default;
+        opacity: 0.4;
+    }
+
+    .nan-icon {
+        margin-right: 5px;
+    }
+
+    .nan-button-loading-icon {
+        margin-right: 5px;
+        font-size: 16px;
+        cursor: default;
+        transform-origin: center center;
+        animation: spin infinite 1s linear;
+    }
+}
+
+// type
+@include mixin.button-type(primary);
+@include mixin.button-type(secondary);
+@include mixin.button-type(outline);
+
+// status
+@include mixin.button-status(primary, primary);
+@include mixin.button-status(primary, success);
+@include mixin.button-status(primary, warning);
+@include mixin.button-status(primary, danger);
+@include mixin.button-status(secondary, primary);
+@include mixin.button-status(secondary, success);
+@include mixin.button-status(secondary, warning);
+@include mixin.button-status(secondary, danger);
+@include mixin.button-status(outline, primary);
+@include mixin.button-status(outline, success);
+@include mixin.button-status(outline, warning);
+@include mixin.button-status(outline, danger);
+
+// size
+@include mixin.button-size(s, corner.$shape-corner-small, 24px, 12px, 8px);
+@include mixin.button-size(m, corner.$shape-corner-small, 32px, 14px, 16px);
+@include mixin.button-size(l, corner.$shape-corner-medium, 36px, 14px, 16px);
+@include mixin.button-size(xl, corner.$shape-corner-medium, 48px, 16px, 24px);

@@ -1,0 +1,198 @@
+@use '../../../styles/color/color.scss' as color-color;
+@use '../../../styles/tokens/color.scss' as tokens-color;
+
+// ------------ primary ------------
+// text
+$btn-primary-color-text: color-color.$color-white;
+$btn-primary-color-text--primary: color-color.$color-white;
+$btn-primary-color-text--success: color-color.$color-white;
+$btn-primary-color-text--warning: color-color.$color-white;
+$btn-primary-color-text--danger: color-color.$color-white;
+
+// background
+$btn-primary-color-bg: tokens-color.$primary-color;
+$btn-primary-color-bg--primary: tokens-color.$primary-color;
+$btn-primary-color-bg--success: tokens-color.$success-color;
+$btn-primary-color-bg--warning: tokens-color.$warning-color;
+$btn-primary-color-bg--danger: tokens-color.$danger-color;
+
+// background when hover
+$btn-primary-color-bg-hover: tokens-color.$primary-color-6;
+$btn-primary-color-bg-hover--primary: tokens-color.$primary-color-6;
+$btn-primary-color-bg-hover--success: tokens-color.$success-color-6;
+$btn-primary-color-bg-hover--warning: tokens-color.$warning-color-6;
+$btn-primary-color-bg-hover--danger: tokens-color.$danger-color-6;
+
+// background when active
+$btn-primary-color-bg-active: tokens-color.$primary-color-8;
+$btn-primary-color-bg-active--primary: tokens-color.$primary-color-8;
+$btn-primary-color-bg-active--success: tokens-color.$success-color-8;
+$btn-primary-color-bg-active--warning: tokens-color.$warning-color-8;
+$btn-primary-color-bg-active--danger: tokens-color.$danger-color-8;
+
+// border
+$btn-primary-color-border: transparent;
+$btn-primary-color-border--primary: transparent;
+$btn-primary-color-border--success: transparent;
+$btn-primary-color-border--warning: transparent;
+$btn-primary-color-border--danger: transparent;
+
+// ------------ secondary ------------
+// text
+$btn-secondary-color-text: tokens-color.$text-color-l;
+$btn-secondary-color-text--primary: tokens-color.$primary-color;
+$btn-secondary-color-text--success: tokens-color.$success-color;
+$btn-secondary-color-text--warning: tokens-color.$warning-color;
+$btn-secondary-color-text--danger: tokens-color.$danger-color;
+
+// background
+$btn-secondary-color-bg: tokens-color.$neutral-color-1;
+$btn-secondary-color-bg--primary: tokens-color.$primary-color-1;
+$btn-secondary-color-bg--success: tokens-color.$success-color-1;
+$btn-secondary-color-bg--warning: tokens-color.$warning-color-1;
+$btn-secondary-color-bg--danger: tokens-color.$danger-color-1;
+
+// background when hover
+$btn-secondary-color-bg-hover: tokens-color.$neutral-color-2;
+$btn-secondary-color-bg-hover--primary: tokens-color.$primary-color-2;
+$btn-secondary-color-bg-hover--success: tokens-color.$success-color-2;
+$btn-secondary-color-bg-hover--warning: tokens-color.$warning-color-2;
+$btn-secondary-color-bg-hover--danger: tokens-color.$danger-color-2;
+
+// background when active
+$btn-secondary-color-bg-active: tokens-color.$neutral-color-3;
+$btn-secondary-color-bg-active--primary: tokens-color.$primary-color-3;
+$btn-secondary-color-bg-active--success: tokens-color.$success-color-3;
+$btn-secondary-color-bg-active--warning: tokens-color.$warning-color-3;
+$btn-secondary-color-bg-active--danger: tokens-color.$danger-color-3;
+
+// border
+$btn-secondary-color-border: transparent;
+$btn-secondary-color-border--primary: transparent;
+$btn-secondary-color-border--success: transparent;
+$btn-secondary-color-border--warning: transparent;
+$btn-secondary-color-border--danger: transparent;
+
+// ------------ outline ------------
+// text
+$btn-outline-color-text: tokens-color.$text-color-l;
+$btn-outline-color-text--primary: tokens-color.$primary-color;
+$btn-outline-color-text--success: tokens-color.$success-color;
+$btn-outline-color-text--warning: tokens-color.$warning-color;
+$btn-outline-color-text--danger: tokens-color.$danger-color;
+
+// background
+$btn-outline-color-bg: transparent;
+$btn-outline-color-bg--primary: transparent;
+$btn-outline-color-bg--success: transparent;
+$btn-outline-color-bg--warning: transparent;
+$btn-outline-color-bg--danger: transparent;
+
+// background when hover
+$btn-outline-color-bg-hover: tokens-color.$neutral-color-1;
+$btn-outline-color-bg-hover--primary: tokens-color.$primary-color-1;
+$btn-outline-color-bg-hover--success: tokens-color.$success-color-1;
+$btn-outline-color-bg-hover--warning: tokens-color.$warning-color-1;
+$btn-outline-color-bg-hover--danger: tokens-color.$danger-color-1;
+
+// background when active
+$btn-outline-color-bg-active: tokens-color.$neutral-color-2;
+$btn-outline-color-bg-active--primary: tokens-color.$primary-color-2;
+$btn-outline-color-bg-active--success: tokens-color.$success-color-2;
+$btn-outline-color-bg-active--warning: tokens-color.$warning-color-2;
+$btn-outline-color-bg-active--danger: tokens-color.$danger-color-2;
+
+// border
+$btn-outline-color-border: tokens-color.$neutral-color-3;
+$btn-outline-color-border--primary: tokens-color.$primary-color-3;
+$btn-outline-color-border--success: tokens-color.$success-color-3;
+$btn-outline-color-border--warning: tokens-color.$warning-color-3;
+$btn-outline-color-border--danger: tokens-color.$danger-color-3;
+
+// color maps
+$btn-primary-color: (
+    text: $btn-primary-color-text,
+    text--primary: $btn-primary-color-text--primary,
+    text--success: $btn-primary-color-text--success,
+    text--warning: $btn-primary-color-text--warning,
+    text--danger: $btn-primary-color-text--danger,
+    bg: $btn-primary-color-bg,
+    bg--primary: $btn-primary-color-bg--primary,
+    bg--success: $btn-primary-color-bg--success,
+    bg--warning: $btn-primary-color-bg--warning,
+    bg--danger: $btn-primary-color-bg--danger,
+    bg-hover: $btn-primary-color-bg-hover,
+    bg-hover--primary: $btn-primary-color-bg-hover--primary,
+    bg-hover--success: $btn-primary-color-bg-hover--success,
+    bg-hover--warning: $btn-primary-color-bg-hover--warning,
+    bg-hover--danger: $btn-primary-color-bg-hover--danger,
+    bg-active: $btn-primary-color-bg-active,
+    bg-active--primary: $btn-primary-color-bg-active--primary,
+    bg-active--success: $btn-primary-color-bg-active--success,
+    bg-active--warning: $btn-primary-color-bg-active--warning,
+    bg-active--danger: $btn-primary-color-bg-active--danger,
+    border: $btn-primary-color-border,
+    border--primary: $btn-primary-color-border--primary,
+    border--success: $btn-primary-color-border--success,
+    border--warning: $btn-primary-color-border--warning,
+    border--danger: $btn-primary-color-border--danger
+);
+$btn-secondary-color: (
+    text: $btn-secondary-color-text,
+    text--primary: $btn-secondary-color-text--primary,
+    text--success: $btn-secondary-color-text--success,
+    text--warning: $btn-secondary-color-text--warning,
+    text--danger: $btn-secondary-color-text--danger,
+    bg: $btn-secondary-color-bg,
+    bg--primary: $btn-secondary-color-bg--primary,
+    bg--success: $btn-secondary-color-bg--success,
+    bg--warning: $btn-secondary-color-bg--warning,
+    bg--danger: $btn-secondary-color-bg--danger,
+    bg-hover: $btn-secondary-color-bg-hover,
+    bg-hover--primary: $btn-secondary-color-bg-hover--primary,
+    bg-hover--success: $btn-secondary-color-bg-hover--success,
+    bg-hover--warning: $btn-secondary-color-bg-hover--warning,
+    bg-hover--danger: $btn-secondary-color-bg-hover--danger,
+    bg-active: $btn-secondary-color-bg-active,
+    bg-active--primary: $btn-secondary-color-bg-active--primary,
+    bg-active--success: $btn-secondary-color-bg-active--success,
+    bg-active--warning: $btn-secondary-color-bg-active--warning,
+    bg-active--danger: $btn-secondary-color-bg-active--danger,
+    border: $btn-secondary-color-border,
+    border--primary: $btn-secondary-color-border--primary,
+    border--success: $btn-secondary-color-border--success,
+    border--warning: $btn-secondary-color-border--warning,
+    border--danger: $btn-secondary-color-border--danger
+);
+$btn-outline-color: (
+    text: $btn-outline-color-text,
+    text--primary: $btn-outline-color-text--primary,
+    text--success: $btn-outline-color-text--success,
+    text--warning: $btn-outline-color-text--warning,
+    text--danger: $btn-outline-color-text--danger,
+    bg: $btn-outline-color-bg,
+    bg--primary: $btn-outline-color-bg--primary,
+    bg--success: $btn-outline-color-bg--success,
+    bg--warning: $btn-outline-color-bg--warning,
+    bg--danger: $btn-outline-color-bg--danger,
+    bg-hover: $btn-outline-color-bg-hover,
+    bg-hover--primary: $btn-outline-color-bg-hover--primary,
+    bg-hover--success: $btn-outline-color-bg-hover--success,
+    bg-hover--warning: $btn-outline-color-bg-hover--warning,
+    bg-hover--danger: $btn-outline-color-bg-hover--danger,
+    bg-active: $btn-outline-color-bg-active,
+    bg-active--primary: $btn-outline-color-bg-active--primary,
+    bg-active--success: $btn-outline-color-bg-active--success,
+    bg-active--warning: $btn-outline-color-bg-active--warning,
+    bg-active--danger: $btn-outline-color-bg-active--danger,
+    border: $btn-outline-color-border,
+    border--primary: $btn-outline-color-border--primary,
+    border--success: $btn-outline-color-border--success,
+    border--warning: $btn-outline-color-border--warning,
+    border--danger: $btn-outline-color-border--danger
+);
+$btn-color: (
+    primary: $btn-primary-color,
+    secondary: $btn-secondary-color,
+    outline: $btn-outline-color
+);

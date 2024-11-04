@@ -19,6 +19,7 @@ export default {
         'no-invalid-double-slash-comments': null,
         // 指定规则前需要空行
         'rule-empty-line-before': 'always',
-        'declaration-block-no-duplicate-properties': true
+        'declaration-block-no-duplicate-properties': true,
+        'scss/dollar-variable-pattern': null
     }
 };

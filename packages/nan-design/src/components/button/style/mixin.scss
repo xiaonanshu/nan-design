@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use 'variables.scss' as variables;
+
+@mixin button-type($type) {
+    // 获取当前类型按钮的颜色映射
+    $current-color: map.get(variables.$btn-color, $type);
+
+    // 从颜色映射中拿基本颜色并设置
+    .nan-button--#{$type} {
+        color: map.get($current-color, text);
+        background-color: map.get($current-color, bg);
+        border-color: map.get($current-color, border);
+
+        // 非禁用状态的hover
+
+        &:not(:disabled):hover {
+            background-color: map.get($current-color, bg-hover);
+        }
+
+        // 非禁用状态的active
+
+        &:not(:disabled):active {
+            background-color: map.get($current-color, bg-active);
+        }
+    }
+}
+
+@mixin button-status($type, $status) {
+    $current-color: map.get(variables.$btn-color, $type);
+
+    .nan-button--#{$type} {
+        &.nan-button--#{$status} {
+            color: map.get($current-color, text--#{$status});
+            background-color: map.get($current-color, bg--#{$status});
+            border-color: map.get($current-color, border--#{$status});
+
+            &:not(:disabled):hover {
+                background-color: map.get($current-color, bg-hover--#{$status});
+            }
+
+            &:not(:disabled):active {
+                background-color: map.get($current-color, bg-active--#{$status});
+            }
+        }
+    }
+}
+
+@mixin button-size($size, $br, $height, $fs, $pd) {
+    .nan-button--#{$size} {
+        min-width: $height;
+        height: $height;
+        padding: 0 $pd;
+        font-size: $fs;
+        border-radius: $br;
+    }
+}
