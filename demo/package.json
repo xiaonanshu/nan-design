@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@nan-design/react": "workspace:^"
+    "@ant-design/icons": "^5.5.1",
+    "@nan-design/react": "workspace:^",
+    "antd": "^5.21.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
