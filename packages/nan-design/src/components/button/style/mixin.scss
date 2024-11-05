@@ -47,7 +47,7 @@
 
 @mixin button-size($size, $br, $height, $fs, $pd) {
     .nan-button--#{$size} {
-        min-width: $height;
+        // min-width: $height;
         height: $height;
         padding: 0 $pd;
         font-size: $fs;
