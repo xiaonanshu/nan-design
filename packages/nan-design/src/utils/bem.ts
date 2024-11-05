@@ -12,6 +12,7 @@ const IDENTITY = 'nan';
 
 const createModifier = (prefix: string, modifierObject?: BEMModifier) => {
     let modifiers: string[] = [];
+    // 类型为boolean的用对象，有具体值的用数组
     if (isArray(modifierObject)) {
         modifiers = modifierObject
             .filter(Boolean)

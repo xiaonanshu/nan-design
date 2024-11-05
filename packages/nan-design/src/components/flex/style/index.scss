@@ -1,6 +1,52 @@
+@use './variables.scss' as variables;
+
 .nan-flex {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
+
+    &--vertical {
+        flex-direction: column;
+    }
+
+    &--small {
+        gap: variables.$gap-small;
+    }
+
+    &--middle {
+        gap: variables.$gap-middle;
+    }
+
+    &--large {
+        gap: variables.$gap-large;
+    }
+}
+
+$flex-wraps: ('wrap', 'no-wrap', 'wrap-reverse');
+
+@each $wrap in $flex-wraps {
+    .nan-flex--#{$wrap} {
+        flex-wrap: #{$wrap};
+    }
+}
+
+$flex-justifies: (
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around',
+    'space-evenly'
+);
+
+@each $justify in $flex-justifies {
+    .nan-flex--justify-#{$justify} {
+        justify-content: #{$justify};
+    }
+}
+
+$flex-aligns: ('flex-start', 'flex-end', 'center', 'baseline', 'baseline', 'strench');
+
+@each $align in $flex-aligns {
+    .nan-flex--align-#{$align} {
+        align-items: #{$align};
+    }
 }
