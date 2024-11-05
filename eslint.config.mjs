@@ -30,7 +30,8 @@ export default [
             'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 console 使用，开发环境中关闭规则
             'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 debugger 使用，开发环境中关闭规则
             'react/react-in-jsx-scope': 'off',
-            'react/jsx-uses-react': 'off'
+            'react/jsx-uses-react': 'off',
+            'no-unused-vars': 'off'
         }
     },
     {
