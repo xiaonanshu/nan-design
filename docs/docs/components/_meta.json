@@ -2,4 +2,10 @@
     "type": "file",
     "name": "mds/Button",
     "label": "Button"
-}]
+},
+{
+    "type": "file",
+    "name": "mds/Flex",
+    "label": "Flex"
+}
+]

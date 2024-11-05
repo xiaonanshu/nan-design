@@ -1,0 +1,205 @@
+# Flex布局
+
+## 主轴方向
+添加 `vertical = true` 设置主轴方向为垂直，默认为水平
+
+```tsx
+import React from 'react';
+import {Flex, Button} from '@nan-design/react';
+
+function App(){
+    const [isVertical, setIsVertical] = React.useState(false);
+    const baseStyle: React.CSSProperties = {
+        width: '25%',
+        height: 54,
+    };
+
+    return (<>
+    <div style={{marginBottom: '10px'}}>
+                <label style={{marginRight: '15px'}}>
+                    <input
+                        type="radio"
+                        name="direction"
+                        value="horizontal"
+                        checked={!isVertical}
+                        onChange={() => setIsVertical(false)}
+                    />
+                    水平
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        name="direction"
+                        value="vertical"
+                        checked={isVertical}
+                        onChange={() => setIsVertical(true)}
+                    />
+                    垂直
+                </label>
+            </div>
+            <Flex vertical={isVertical}>
+                {Array.from({length: 4}).map((item, index)=>{
+                    return <div key={index} style = {{...baseStyle, backgroundColor: index % 2 ? '#1677ff' : '#1677ffbf'}}></div>
+                })}
+            </Flex>
+    </>)
+}
+
+export default App;
+```
+
+## 对齐方式
+添加`justify`属性设置主轴对齐方式，添加`align`属性设置交叉轴对齐方式。具体值见：
+
+```tsx
+import React from 'react';
+import {Flex, Button} from '@nan-design/react';
+
+function App(){
+    const justifies = ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'];
+    const aligns = ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'];
+
+    const [justify, setJustify] = React.useState(justifies[0]);
+    const [align, setAlign] = React.useState(aligns[0]);
+
+    const [justifyIndex, setJustifyIndex] = React.useState(0);
+    const [alignIndex, setAlignIndex] = React.useState(0);
+
+    return (<>
+    <div>
+    <p>justify:</p>
+    {justifies.map((item, index)=>{
+        return <span key={index} onClick = {()=>{
+            setJustify(item);
+            setJustifyIndex(index);
+        }} style={{backgroundColor: index === justifyIndex ? '#fff' : '#ccc', cursor: 'pointer', border: '1px solid #ccc',padding:'0 5px', marginRight: '5px'}}>{item}</span>
+    })}
+    </div>
+
+    <div>
+    <p>align:</p>
+    {aligns.map((item, index)=>{
+        return <span key={index} onClick = {()=>{
+            setAlign(item);
+            setAlignIndex(index);
+        }} style={{backgroundColor: index === alignIndex ? '#fff' : '#ccc', cursor: 'pointer', border: '1px solid #ccc',padding:'0 5px', marginRight: '5px'}}>{item}</span>
+    })}
+    </div>
+
+    <Flex style={{height: '100px', border:'1px, solid blue'}} justify={justify} align={align} gap='small'>
+        {Array.from({length: 4}).map((item, index)=>{
+                    return <Button key={index}>Button</Button>
+        })}
+    </Flex>
+</>)
+}
+
+export default App;
+```
+
+## 元素间隔
+添加`gap`属性设置元素间隔，可选值：`small`、`middle`、`large`；除此之外，你也可以传入一个数字或者字符串自定义元素间隔。
+**注意：在自定义gap时，如果传入字符串，需要带上单位，否则不生效。例如：` gap = '8' `，这样设置不会生效，你应该改为：` gap = {8} `或者` gap='8px' `**
+
+```tsx
+import React from 'react';
+import {Flex, Button} from '@nan-design/react';
+
+function App(){
+    const gaps = ['small', 'middle', 'large', 'customize'];
+    const [checkIndex, setCheckIndex] = React.useState(-1);
+    const [gap, setGap] = React.useState('');
+    return (<>
+
+    <div>
+
+        {gaps.map((item, index)=>{
+            return <label style={{marginRight: '15px'}} key={index}>
+            <input
+                type="radio"
+                name="gap"
+                value={item}
+                checked={checkIndex === index}
+                onClick={() =>{
+                    if(checkIndex === index){
+                        setCheckIndex(-1);
+                        setGap('');
+                        return;
+                    }
+                    setCheckIndex(index);
+                    if(index === gaps.indexOf('customize')){
+                        setGap(0);
+                        return ;
+                    }
+                    setGap(item);
+                }}
+                onChange={e => {}}
+            />
+            {item}
+        </label>
+        })}
+
+        {checkIndex === gaps.indexOf('customize') && <>
+        <input type='range' min={0} max={80} value = {parseInt(gap)} onChange = {(e)=>{
+            setGap(e.target.value + 'px');
+        }} />
+        <label>{gap}</label>
+        </> }
+    </div>
+
+    <Flex style={{height: '100px', border:'1px, solid blue'}} gap={gap}>
+        {Array.from({length: 4}).map((item, index)=>{
+            return <Button key={index}>Button</Button>
+        })}
+    </Flex>
+
+    </>)
+}
+
+export default App;
+```
+
+## 换行
+
+添加`wrap`属性设置换行方式
+
+```tsx
+import React from 'react';
+import {Flex, Button} from '@nan-design/react';
+
+function App(){
+    const wraps = ['no-wrap', 'wrap', 'wrap-reverse'];
+    const [wrap, setWrap] = React.useState('no-wrap');
+    const [wrapIndex, setWrapIndex] = React.useState(0);
+
+    return(<>
+    <div>
+    {wraps.map((item, index)=>{
+        return <label style={{marginRight: '15px'}} key={index}>
+            <input
+                type="radio"
+                name="wrap"
+                value={item}
+                checked={wrapIndex === index}
+                onChange={() =>{
+                    setWrap(item);
+                    setWrapIndex(index);
+                }}
+            />
+            {item}
+        </label>
+    })}
+    </div>
+
+    <Flex wrap={wrap} gap='small'>
+        {Array.from({length: 20}).map((item, index)=>{
+                return <Button key={index}>Button</Button>
+        })}
+    </Flex>
+
+    </>) 
+}
+export default App;
+```
+
+## API
