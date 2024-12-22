@@ -7,7 +7,7 @@ import {Button, Flex} from '@nan-design/react'
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button type='primary'>主要按钮</Button>
     <Button type='secondary'>次要按钮</Button>
     <Button type='outline'>线框按钮</Button>
@@ -24,7 +24,7 @@ import {Button, Flex} from '@nan-design/react'
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button size='s'>s大小</Button>
     <Button size='m'>m大小</Button>
     <Button size='l'>l大小</Button>
@@ -42,7 +42,7 @@ import {Button, Flex} from '@nan-design/react'
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button>默认</Button>
     <Button shape='round'>全圆角</Button>
     <Button shape='circle'>+</Button>
@@ -60,7 +60,7 @@ import {Button, Flex} from '@nan-design/react'
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button>default</Button>
     <Button status='primary'>primary</Button>
     <Button status='success'>success</Button>
@@ -80,7 +80,7 @@ import {DeleteOutlined, PlusOutlined} from '@ant-design/icons';
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button icon={<PlusOutlined/>}>新增</Button>
     <Button icon={<DeleteOutlined/>} status='danger'>删除</Button>
     </Flex>)
@@ -97,7 +97,7 @@ import {DeleteOutlined} from '@ant-design/icons';
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button disabled>禁用</Button>
     <Button icon={<DeleteOutlined/>} status='danger' disabled>删除</Button>
     </Flex>)
@@ -114,7 +114,7 @@ import {Button, Flex} from '@nan-design/react'
 function App(){
     
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button loading={true} loadingText='加载中' onClick={ ()=>{
         alert('1111');
     } }>加载完成</Button>
@@ -131,7 +131,7 @@ import {Button, Flex} from '@nan-design/react'
 
 function App(){
     return (
-    <Flex>
+    <Flex gap='small'>
     <Button onClick = {()=>{ alert('111') }}>alert</Button>
     </Flex>)
 }
