@@ -20,6 +20,8 @@ export default {
         // 指定规则前需要空行
         'rule-empty-line-before': 'always',
         'declaration-block-no-duplicate-properties': true,
-        'scss/dollar-variable-pattern': null
+        'scss/dollar-variable-pattern': null,
+        // 禁用选择器只能使用-
+        'selector-class-pattern': null
     }
 };
