@@ -1,0 +1,77 @@
+@use '../../../styles/color/color.scss' as baseColor;
+@use '../../../styles/tokens/text.scss' as text;
+@use '../../../styles/tokens/color.scss' as color;
+
+.nan-switch {
+    position: relative;
+
+    // justify-content: center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: baseColor.$color-gray-3;
+    border: none;
+    border-radius: 1em;
+    transition: all 0.2s ease-in-out;
+
+    &--m {
+        min-width: 3.3em;
+        height: 1.8em;
+        font-size: 14px;
+
+        .nan-switch__inner {
+            font-size: text.$text-size-s;
+        }
+    }
+
+    &--s {
+        min-width: 3.3em;
+        height: 1.8em;
+        font-size: 12px;
+
+        .nan-switch__inner {
+            font-size: text.$text-size-ss;
+        }
+    }
+
+    &--disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    &__dot {
+        position: absolute;
+        left: 3px;
+        display: flex;
+        width: 1.4em;
+        height: 1.4em;
+        color: #fff;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1em;
+        height: 100%;
+        margin-left: 1.8em;
+        color: color.$text-color-l;
+    }
+
+    &.nan-switch--checked {
+        background-color: baseColor.$color-blue-6;
+
+        .nan-switch__dot {
+            left: calc(100% - 1.4em - 3px);
+        }
+
+        .nan-switch__inner {
+            margin-left: calc(100% - 2.8em);
+            color: baseColor.$color-white;
+        }
+    }
+}

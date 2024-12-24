@@ -1,6 +1,6 @@
 import './App.css';
-import FlexBox from './components/Flex';
 import { ErrorIcon, PrimaryIcon, SuccessIcon, WarningIcon } from '@nan-design/icons';
+import SwitchCom from './components/Switch';
 
 function App() {
     return (
@@ -9,6 +9,7 @@ function App() {
             <PrimaryIcon></PrimaryIcon>
             <SuccessIcon></SuccessIcon>
             <WarningIcon></WarningIcon>
+            <SwitchCom></SwitchCom>
         </>
     );
 }
