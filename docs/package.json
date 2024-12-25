@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
+    "@nan-design/icons": "workspace:^",
     "@nan-design/react": "workspace:^",
     "rspress": "^1.32.0"
   },

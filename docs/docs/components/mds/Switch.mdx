@@ -1,0 +1,92 @@
+# Switch开关
+
+## 基本使用
+通过 `defaultChecked`设置初始状态，默认为false(关) 同时可以通过`checked`为开关设置固定状态
+```tsx
+import { Flex, Switch } from '@nan-design/react';
+
+function App(){
+    return (
+    <Flex gap='small'>
+    <Switch defaultChecked={false}></Switch>
+    <Switch defaultChecked={false} checked = {true}></Switch>
+    </Flex>
+    )
+}
+
+export default App;
+```
+
+## 大小
+开关大小有2种：s、m；默认为s
+```tsx
+import { Flex, Switch } from '@nan-design/react';
+
+function App(){
+    return (
+    <Flex gap='small'>
+    <Switch size='s' defaultChecked={true}></Switch>
+    <Switch size='m' defaultChecked={true}></Switch>
+    </Flex>
+    )
+}
+
+export default App;
+```
+
+## 禁用
+通过`disabled`设置开关为禁用状态 禁用状态下无法改变开关状态
+```tsx
+import { Flex, Switch } from '@nan-design/react';
+
+function App(){
+    return (
+    <Flex gap='small'>
+    正常：<Switch  defaultChecked={true}></Switch>
+    禁用：<Switch disabled defaultChecked={true}></Switch>
+    </Flex>
+    )
+}
+
+export default App;
+```
+
+## 自定义背景色
+通过`checkedColor`设置选中状态的背景色
+通过`unCheckedColor`设置未选中状态的背景色
+```tsx
+import { Flex, Switch } from '@nan-design/react';
+
+function App(){
+    return (
+    <Flex gap='small'>
+    <Switch checkedColor='green' unCheckedColor='red'></Switch>
+    </Flex>
+    )
+}
+
+export default App;
+```
+
+## 自定义开关内容
+通过`checkedNode`设置选中状态的内容
+通过`unCheckedNode`设置未选中状态的内容
+可以设置：图标、文字等
+```tsx
+import { Flex, Switch } from '@nan-design/react';
+import { SelectIcon, CloseIcon } from '@nan-design/icons';
+
+function App(){
+    return (
+    <Flex gap='large'>
+    <Switch checkedNode='开' unCheckedNode='关' defaultChecked={true}></Switch>
+    <Switch checkedNode='1' unCheckedNode='0'></Switch>
+    <Switch checkedNode={<SelectIcon />} unCheckedNode={<CloseIcon />} defaultChecked={true}></Switch>
+    </Flex>
+    )
+}
+
+export default App;
+```
+
+## API

@@ -7,5 +7,10 @@
     "type": "file",
     "name": "mds/Flex",
     "label": "Flex"
+},
+{
+    "type": "file",
+    "name": "mds/Switch",
+    "label": "Switch"
 }
 ]
