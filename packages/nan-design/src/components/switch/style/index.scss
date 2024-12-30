@@ -40,6 +40,18 @@
         opacity: 0.6;
     }
 
+    &--loading {
+        cursor: default;
+        background-color: baseColor.$color-gray-1;
+
+        .nan-switch-loading-icon {
+            font-size: 1.4em;
+            color: baseColor.$color-blue-6;
+            transform-origin: center center;
+            animation: spin infinite 1s linear;
+        }
+    }
+
     &__dot {
         position: absolute;
         left: 3px;
@@ -65,6 +77,10 @@
     &.nan-switch--checked {
         background-color: baseColor.$color-blue-6;
 
+        &.nan-switch--loading {
+            background-color: baseColor.$color-blue-5;
+        }
+
         .nan-switch__dot {
             left: calc(100% - 1.4em - 3px);
         }
@@ -73,5 +89,15 @@
             margin-left: calc(100% - 2.8em);
             color: baseColor.$color-white;
         }
+    }
+}
+
+@keyframes spin {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
