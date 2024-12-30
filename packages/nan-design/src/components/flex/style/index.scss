@@ -2,6 +2,7 @@
 
 .nan-flex {
     display: flex;
+    align-items: flex-start;
 
     &--vertical {
         flex-direction: column;
