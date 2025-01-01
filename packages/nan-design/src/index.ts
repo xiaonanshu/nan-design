@@ -3,3 +3,4 @@ import './styles';
 export * from './components/button';
 export * from './components/flex';
 export * from './components/switch';
+export * from './components/pagination';

@@ -179,6 +179,9 @@ importers:
       '@nan-design/shared':
         specifier: workspace:^
         version: link:../shared
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       react:
         specifier: '>=16.8.0'
         version: 18.3.1

@@ -3,3 +3,4 @@ import './index.scss';
 import '../components/button/style';
 import '../components/flex/style';
 import '../components/switch/style';
+import '../components/pagination/style';

@@ -33,6 +33,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@nan-design/shared": "workspace:^"
+    "@nan-design/shared": "workspace:^",
+    "classnames": "^2.5.1"
   }
 }
