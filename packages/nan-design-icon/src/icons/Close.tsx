@@ -1,7 +1,7 @@
 import React from 'react';
 import { NanIconProps } from '../components/NanIcon/interface';
 import NanIcon from '../components/NanIcon/NanIcon';
-import CloseSvg from './svg/Colse';
+import CloseSvg from './svg/Close';
 
 const CloseIcon = React.forwardRef<HTMLSpanElement, NanIconProps>((props, ref) => {
     return <NanIcon ref={ref} Icon={CloseSvg} name="select-icon" {...props}></NanIcon>;

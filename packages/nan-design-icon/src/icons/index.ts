@@ -4,3 +4,7 @@ export { default as SuccessIcon } from './Success';
 export { default as WarningIcon } from './Warning';
 export { default as SelectIcon } from './Select';
 export { default as CloseIcon } from './Close';
+export { default as ArrowLeftIcon } from './Arrow_Left';
+export { default as ArrowRightIcon } from './Arrow_Right';
+export { default as ArrowDoubleLeftIcon } from './Arrow_Double_Left';
+export { default as ArrowDoubleRightIcon } from './Arrow_Double_Right';
