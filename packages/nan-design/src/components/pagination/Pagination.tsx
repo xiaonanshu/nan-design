@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PaginationProps from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { useMergeState } from '../../utils/hooks/useMergeState';
+import PageJumper from './PageJumper/PageJumper';
 import {
     ArrowLeftIcon,
     ArrowRightIcon,
@@ -106,6 +107,18 @@ const Pagination: React.FC<PaginationProps> = (props) => {
                 setCurrentPage(totalPage);
             }
         }
+    };
+
+    // 跳转页码
+    const jumpHandler = (page: number) => {
+        let target = page;
+        if (target > totalPage) {
+            target = totalPage;
+        } else if (target < 1) {
+            target = 1;
+        }
+
+        setCurrentPage(target);
     };
 
     return (
@@ -217,6 +230,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             >
                 <ArrowRightIcon></ArrowRightIcon>
             </span>
+            <PageJumper show={showquickJumper} jumpCallback={jumpHandler} size={size}></PageJumper>
         </div>
     );
 };

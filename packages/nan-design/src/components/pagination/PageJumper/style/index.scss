@@ -1,0 +1,33 @@
+@use '../../../../styles/color/color.scss' as baseColor;
+
+.nan-pagination-pagejumper {
+    display: flex;
+    align-items: center;
+
+    &--m {
+        font-size: 14px;
+    }
+
+    &--s {
+        font-size: 12px;
+    }
+
+    &__input {
+        width: 4em;
+        height: 2.3em;
+        padding: 4px 11px;
+        margin-right: 5px;
+        margin-left: 5px;
+        border: 1px solid baseColor.$color-gray-3;
+        border-radius: 5px;
+        outline: none;
+
+        &:hover {
+            border-color: baseColor.$color-blue-7;
+        }
+
+        &:focus {
+            border-color: baseColor.$color-blue-7;
+        }
+    }
+}
