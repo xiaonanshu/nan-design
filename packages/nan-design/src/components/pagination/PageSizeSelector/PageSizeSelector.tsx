@@ -1,0 +1,88 @@
+import React, { useEffect, useRef, useState } from 'react';
+import PageSizeSlectorProps from './interface';
+import './style/index.scss';
+import { createCssSCope } from '../../../utils/bem';
+import { ArrowDownIcon, ArrowUpIcon } from '../../../../../nan-design-icon/src';
+
+const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {
+    const { pageSizeChange, pageSizeOptions = [10, 20, 30, 50], currentPageSize, size } = props;
+
+    const [sizeOptions, setSizeOptions] = useState<number[]>(pageSizeOptions);
+    const [showOptions, setShowOptions] = useState<boolean>(false);
+    const innerRef = useRef<HTMLDivElement>(null);
+    const optionsRef = useRef<HTMLDivElement>(null);
+    const bem = createCssSCope('pagination-pageSizeSelector');
+    const className = bem([size]);
+
+    useEffect(() => {
+        if (!sizeOptions.includes(currentPageSize)) {
+            sizeOptions.push(currentPageSize);
+            setSizeOptions(sizeOptions.sort((a, b) => a - b));
+        }
+    }, [pageSizeOptions]);
+
+    const closeOptions = (e: MouseEvent) => {
+        if (
+            innerRef.current &&
+            !innerRef.current.contains(e.target as Node) &&
+            optionsRef.current &&
+            !optionsRef.current.contains(e.target as Node)
+        ) {
+            setShowOptions(false);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener('click', closeOptions, true);
+        return () => {
+            window.removeEventListener('click', closeOptions, true);
+        };
+    }, []);
+
+    const selectHandle = (pageSize: number) => {
+        pageSizeChange?.(pageSize);
+        setShowOptions(false);
+    };
+
+    const style: React.CSSProperties = {};
+    if (showOptions) {
+        style.color = 'rgba(128, 128, 128, 0.5)';
+    }
+
+    return (
+        <div className={className}>
+            <div
+                className={bem('inner')}
+                onClick={() => {
+                    setShowOptions(!showOptions);
+                }}
+                ref={innerRef}
+            >
+                <span style={style}> {currentPageSize} 条 / 页 </span>
+                <span className={bem('arrowIcon')}>
+                    {showOptions ? <ArrowUpIcon></ArrowUpIcon> : <ArrowDownIcon></ArrowDownIcon>}
+                </span>
+            </div>
+            {showOptions && (
+                <div className={bem('options')} ref={optionsRef}>
+                    {sizeOptions.map((option, index) => {
+                        return (
+                            <div
+                                key={option}
+                                className={bem('options-item', {
+                                    selected: option === currentPageSize
+                                })}
+                                onClick={() => {
+                                    selectHandle(option);
+                                }}
+                            >
+                                {option} 条 / 页
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default PageSizeSlector;

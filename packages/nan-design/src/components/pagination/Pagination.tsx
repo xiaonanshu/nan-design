@@ -3,6 +3,7 @@ import PaginationProps from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { useMergeState } from '../../utils/hooks/useMergeState';
 import PageJumper from './PageJumper/PageJumper';
+import PageSizeSlector from './PageSizeSelector/PageSizeSelector';
 import {
     ArrowLeftIcon,
     ArrowRightIcon,
@@ -230,6 +231,11 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             >
                 <ArrowRightIcon></ArrowRightIcon>
             </span>
+            <PageSizeSlector
+                size={size}
+                pageSizeChange={(pageSize) => setCurrentPageSize(pageSize)}
+                currentPageSize={currentPageSize}
+            ></PageSizeSlector>
             <PageJumper show={showquickJumper} jumpCallback={jumpHandler} size={size}></PageJumper>
         </div>
     );
