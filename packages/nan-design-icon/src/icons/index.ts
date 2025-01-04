@@ -8,3 +8,5 @@ export { default as ArrowLeftIcon } from './Arrow_Left';
 export { default as ArrowRightIcon } from './Arrow_Right';
 export { default as ArrowDoubleLeftIcon } from './Arrow_Double_Left';
 export { default as ArrowDoubleRightIcon } from './Arrow_Double_Right';
+export { default as ArrowDownIcon } from './Arrow_Down';
+export { default as ArrowUpIcon } from './Arrow_Up';
