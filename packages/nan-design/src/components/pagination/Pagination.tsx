@@ -20,8 +20,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         defaultCurrent = 1,
         pageSize,
         defaultPageSize = 10,
-        pageSizeOptions = [10, 20, 50, 100],
-        showquickJumper = true,
+        pageSizeOptions,
+        showQuickJumper = true,
         disabled = false,
         hideOnSinglePage = false,
         showTotal = true,
@@ -98,6 +98,9 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 
     // 修改当前页码
     const changeCurrentPage = (page: number) => {
+        if (disabled) {
+            return;
+        }
         if (page >= 1 && page <= totalPage) {
             setCurrentPage(page);
         } else {
@@ -233,10 +236,17 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             </span>
             <PageSizeSlector
                 size={size}
+                pageSizeOptions={pageSizeOptions}
                 pageSizeChange={(pageSize) => setCurrentPageSize(pageSize)}
                 currentPageSize={currentPageSize}
+                disabled={disabled}
             ></PageSizeSlector>
-            <PageJumper show={showquickJumper} jumpCallback={jumpHandler} size={size}></PageJumper>
+            <PageJumper
+                disabled={disabled}
+                show={showQuickJumper}
+                jumpCallback={jumpHandler}
+                size={size}
+            ></PageJumper>
         </div>
     );
 };

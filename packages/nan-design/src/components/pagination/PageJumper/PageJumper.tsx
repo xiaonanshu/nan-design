@@ -5,7 +5,7 @@ import { createCssSCope } from '../../../utils/bem';
 import { isInteger } from '../../../utils/helper';
 
 const PageJumper: React.FC<PageJumperProps> = (props) => {
-    const { size, show, jumpCallback } = props;
+    const { size, show, jumpCallback, disabled } = props;
     const [targetPage, setTargetPage] = React.useState<string>('');
     const inputRef = React.useRef<HTMLInputElement>(null);
     const input = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +13,9 @@ const PageJumper: React.FC<PageJumperProps> = (props) => {
     };
 
     const jumper = () => {
+        if (disabled) {
+            return;
+        }
         if (isInteger(targetPage)) {
             jumpCallback?.(parseInt(targetPage));
         }
@@ -20,6 +23,9 @@ const PageJumper: React.FC<PageJumperProps> = (props) => {
     };
 
     const handleEnter = (e: KeyboardEvent) => {
+        if (disabled) {
+            return;
+        }
         if (e.key === 'Enter') {
             jumper();
         }
@@ -36,7 +42,7 @@ const PageJumper: React.FC<PageJumperProps> = (props) => {
     });
 
     const bem = createCssSCope('pagination-pagejumper');
-    const className = bem([size]);
+    const className = bem([size], { disabled });
 
     return (
         <>
@@ -44,6 +50,7 @@ const PageJumper: React.FC<PageJumperProps> = (props) => {
                 <div className={className}>
                     前往
                     <input
+                        disabled={disabled}
                         ref={inputRef}
                         type="text"
                         onChange={(e) => {

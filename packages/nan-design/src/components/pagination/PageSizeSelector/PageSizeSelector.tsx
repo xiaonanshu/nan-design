@@ -5,14 +5,20 @@ import { createCssSCope } from '../../../utils/bem';
 import { ArrowDownIcon, ArrowUpIcon } from '../../../../../nan-design-icon/src';
 
 const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {
-    const { pageSizeChange, pageSizeOptions = [10, 20, 30, 50], currentPageSize, size } = props;
+    const {
+        pageSizeChange,
+        pageSizeOptions = [10, 20, 50, 100],
+        currentPageSize,
+        size,
+        disabled
+    } = props;
 
     const [sizeOptions, setSizeOptions] = useState<number[]>(pageSizeOptions);
     const [showOptions, setShowOptions] = useState<boolean>(false);
     const innerRef = useRef<HTMLDivElement>(null);
     const optionsRef = useRef<HTMLDivElement>(null);
     const bem = createCssSCope('pagination-pageSizeSelector');
-    const className = bem([size]);
+    const className = bem([size], { disabled });
 
     useEffect(() => {
         if (!sizeOptions.includes(currentPageSize)) {
@@ -53,6 +59,9 @@ const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {
             <div
                 className={bem('inner')}
                 onClick={() => {
+                    if (disabled) {
+                        return;
+                    }
                     setShowOptions(!showOptions);
                 }}
                 ref={innerRef}

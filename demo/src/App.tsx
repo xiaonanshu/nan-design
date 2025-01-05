@@ -22,9 +22,9 @@ function App() {
             <SuccessIcon></SuccessIcon>
             <WarningIcon></WarningIcon>
             <SwitchCom></SwitchCom>
-            <Pagination total={100} showQuickJumper defaultPageSize={15}></Pagination>
+            <Pagination disabled total={100} showQuickJumper defaultPageSize={15}></Pagination>
             {/* <PaginationCom></PaginationCom> */}
-            <Pag total={100}></Pag>
+            <Pag disabled total={100}></Pag>
             <ArrowLeftIcon></ArrowLeftIcon>
             <ArrowRightIcon></ArrowRightIcon>
             <ArrowDoubleLeftIcon></ArrowDoubleLeftIcon>

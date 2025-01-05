@@ -87,4 +87,35 @@
         }
         transition: all 0.2s;
     }
+
+    &--disabled {
+        cursor: not-allowed;
+
+        .nan-pagination {
+            &__item {
+                color: color.$text-color-ss;
+                cursor: not-allowed;
+                background-color: transparent;
+
+                &--selected {
+                    background-color: baseColor.$color-gray-3;
+                    border: transparent;
+                }
+
+                &--container {
+                    &:hover {
+                        background-color: transparent;
+
+                        .nan-pagination__icon--arrow-double {
+                            opacity: 0 !important;
+                        }
+
+                        .nan-pagination__icon--ellipsis {
+                            opacity: 1 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

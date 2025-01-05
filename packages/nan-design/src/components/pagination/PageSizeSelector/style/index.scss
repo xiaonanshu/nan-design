@@ -1,4 +1,5 @@
 @use '../../../../styles/color/color.scss' as baseColor;
+@use '../../../../styles/tokens/color.scss' as color;
 
 .nan-pagination-pageSizeSelector {
     position: relative;
@@ -42,6 +43,10 @@
         border-radius: 10px;
         transition: all 0.2s;
 
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
         &-item {
             width: 6.3em;
             height: 2.3em;
@@ -62,6 +67,14 @@
                     background-color: baseColor.$color-green-2;
                 }
             }
+        }
+    }
+
+    &--disabled {
+        .nan-pagination-pageSizeSelector__inner {
+            color: color.$text-color-ss;
+            cursor: not-allowed;
+            background-color: baseColor.$color-gray-1;
         }
     }
 }

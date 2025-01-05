@@ -30,4 +30,15 @@
             border-color: baseColor.$color-blue-7;
         }
     }
+
+    &--disabled {
+        .nan-pagination-pagejumper__input {
+            cursor: not-allowed;
+            background-color: baseColor.$color-gray-1;
+
+            &:hover {
+                border-color: baseColor.$color-gray-3;
+            }
+        }
+    }
 }
