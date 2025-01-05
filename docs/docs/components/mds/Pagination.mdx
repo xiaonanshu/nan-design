@@ -1,0 +1,95 @@
+# Pagination 分页器
+
+## 基本使用
+`total` ：总数量    
+`defaultCurrent` : 默认页码    
+`defaultPageSize` : 默认每页容积
+```tsx
+import {Pagination} from '@nan-design/react';
+
+function App(){
+    return (
+        <div style = {{paddingBottom: '20px'}}>
+            <Pagination total={100} defaultCurrent={2} defaultPageSize={10}></Pagination>
+        </div>
+    )
+}
+
+export default App;
+
+```
+## 大小
+分页器大小有两种：s、m；默认为m 通过`size`设置初始状态，默认为false
+```tsx
+import {Flex, Pagination} from '@nan-design/react';
+
+function App(){
+    return (
+        <Flex vertical gap={20}>
+        <Pagination total={100}></Pagination>
+        <Pagination total={100} size='s'></Pagination>
+        </Flex>
+    )
+}
+
+export default App;
+
+```
+
+## 快速跳转
+`showQuickJumper`控制是否显示快速跳转组件 默认为true 显示
+```tsx
+import React from 'react';
+import {Flex, Pagination, Button} from '@nan-design/react';
+
+function App(){
+    const [show, setShow] = React.useState<boolean>(true);
+    return (
+        <div style = {{paddingBottom: '20px'}}>
+            <Button onClick={()=>{setShow(!show)}} style={{marginBottom: '10px'}}>change showQuickJumper</Button>
+            <Pagination total={100} defaultCurrent={2} defaultPageSize={10} showQuickJumper={show}></Pagination>
+        </div>
+    )
+}
+
+export default App;
+
+```
+
+## 每页容量控制
+`pageSizeOptions`接受一个`number`类型数组 代表可选择的每页容量 默认为[10, 20, 50, 100]
+```tsx
+import React from 'react';
+import {Flex, Pagination, Button} from '@nan-design/react';
+
+function App(){
+    return (
+        <div style = {{paddingBottom: '20px'}}>
+            <Pagination total={100} defaultCurrent={2} pageSizeOptions={[10, 20, 30, 40, 50, 100]}></Pagination>
+        </div>
+    )
+}
+
+export default App;
+
+```
+
+## 禁用状态
+`disabled`控制是否禁用 默认为false
+```tsx
+import React from 'react';
+import {Flex, Pagination, Button} from '@nan-design/react';
+
+function App(){
+    const[disabled, setDisabled] = React.useState<boolean>(false);
+    return (
+        <div style = {{paddingBottom: '20px'}}>
+            <Button onClick={()=>{setDisabled(!disabled)}} style={{marginBottom: '10px'}}>change disabled</Button>
+            <Pagination total={100} defaultCurrent={2} disabled={disabled} ></Pagination>
+        </div>
+    )
+}
+
+export default App;
+
+```

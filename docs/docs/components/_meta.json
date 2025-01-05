@@ -12,5 +12,10 @@
     "type": "file",
     "name": "mds/Switch",
     "label": "Switch"
+},
+{
+    "type": "file",
+    "name": "mds/Pagination",
+    "label": "Pagination"
 }
 ]
