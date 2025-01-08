@@ -1,7 +1,7 @@
 import React from 'react';
 import { NanIconProps } from '../components/NanIcon/interface';
 import NanIcon from '../components/NanIcon/NanIcon';
-import ArrowDoubleLeftSvg from './svg/Arrow_Double_left';
+import ArrowDoubleLeftSvg from './svg/Arrow_Double_Left';
 
 const ArrowDoubleLeftIcon = React.forwardRef<HTMLSpanElement, NanIconProps>((props, ref) => {
     return (

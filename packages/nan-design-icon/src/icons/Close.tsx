@@ -4,7 +4,7 @@ import NanIcon from '../components/NanIcon/NanIcon';
 import CloseSvg from './svg/Close';
 
 const CloseIcon = React.forwardRef<HTMLSpanElement, NanIconProps>((props, ref) => {
-    return <NanIcon ref={ref} Icon={CloseSvg} name="select-icon" {...props}></NanIcon>;
+    return <NanIcon ref={ref} Icon={CloseSvg} name="close-icon" {...props}></NanIcon>;
 });
 
 CloseIcon.displayName = 'CloseIcon';

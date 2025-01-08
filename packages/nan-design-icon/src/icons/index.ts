@@ -10,3 +10,5 @@ export { default as ArrowDoubleLeftIcon } from './Arrow_Double_Left';
 export { default as ArrowDoubleRightIcon } from './Arrow_Double_Right';
 export { default as ArrowDownIcon } from './Arrow_Down';
 export { default as ArrowUpIcon } from './Arrow_Up';
+export { default as CleanIcon } from './Clean';
+export { default as CleanFillIcon } from './Clean_FIll';
