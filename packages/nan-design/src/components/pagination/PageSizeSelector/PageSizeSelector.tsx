@@ -3,6 +3,7 @@ import PageSizeSlectorProps from './interface';
 import './style/index.scss';
 import { createCssSCope } from '../../../utils/bem';
 import { ArrowDownIcon, ArrowUpIcon } from '../../../../../nan-design-icon/src';
+import { useEventListener } from '../../../utils/hooks/useEventListener';
 
 const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {
     const {
@@ -37,12 +38,8 @@ const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {
             setShowOptions(false);
         }
     };
-    useEffect(() => {
-        window.addEventListener('click', closeOptions, true);
-        return () => {
-            window.removeEventListener('click', closeOptions, true);
-        };
-    }, []);
+    // useCapture设置为true时，点击地方为右侧箭头才能正确打开列表
+    useEventListener(window, 'click', closeOptions, true);
 
     const selectHandle = (pageSize: number) => {
         pageSizeChange?.(pageSize);
