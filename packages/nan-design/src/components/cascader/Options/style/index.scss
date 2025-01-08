@@ -1,0 +1,41 @@
+@use '../../../../styles/color/color.scss' as baseColor;
+@use '../../../../styles/tokens/text.scss' as text;
+@use '../../../../styles/tokens/color.scss' as color;
+
+.nan-cascader-panel {
+    &__options {
+        height: 100%;
+        min-height: 12em;
+        max-height: 12em;
+        padding: 7px;
+        overflow: hidden auto;
+        background-color: #fff;
+        border-right: 1px baseColor.$color-gray-1 solid;
+
+        &__item {
+            min-width: 8em;
+            padding: 5%;
+            list-style: none;
+            cursor: pointer;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: baseColor.$color-gray-1;
+            }
+
+            &--selected {
+                background-color: color.$primary-color-2;
+            }
+
+            &--disabled {
+                color: color.$text-color-ss;
+                cursor: not-allowed;
+                background-color: transparent;
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

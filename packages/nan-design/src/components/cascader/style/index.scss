@@ -1,0 +1,106 @@
+@use '../../../styles/color/color.scss' as baseColor;
+@use '../../../styles/tokens/text.scss' as text;
+@use '../../../styles/tokens/color.scss' as color;
+
+.nan-cascader {
+    position: relative;
+    z-index: 9;
+    width: fit-content;
+    user-select: none;
+
+    &--s {
+        font-size: 12px;
+    }
+
+    &--m {
+        font-size: 14px;
+    }
+
+    &__inner {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 13em;
+        height: 2.3em;
+        padding: 0 11px;
+        line-height: 2.3em;
+
+        // align-items: center;
+        cursor: pointer;
+        border: 1px solid baseColor.$color-gray-4;
+        border-radius: 5px;
+
+        &:hover {
+            border-color: baseColor.$color-blue-6;
+
+            .nan-cascader__icon {
+                &--drop {
+                    opacity: 0;
+                }
+
+                &--clean {
+                    z-index: 1;
+                    opacity: 1;
+                }
+            }
+        }
+
+        &__text,
+        &__placeholder {
+            width: 88%;
+            height: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &__placeholder {
+            width: 88%;
+            color: color.$text-color-ss;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 0.3em;
+        right: 0.3em;
+
+        &--clean {
+            color: color.$text-color-ss;
+            opacity: 0;
+
+            &:hover {
+                color: color.$text-color-s;
+            }
+        }
+
+        &--drop {
+            color: color.$text-color-ss;
+            opacity: 1;
+        }
+    }
+
+    &__options-panel {
+        position: absolute;
+        top: 2.7em;
+        display: flex;
+        background-color: #fff;
+        border: 1px baseColor.$color-gray-1 solid;
+        border-right: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px baseColor.$color-gray-4;
+    }
+
+    &--disabled {
+        color: color.$text-color-ss;
+        background-color: baseColor.$color-gray-1;
+
+        .nan-cascader__inner {
+            cursor: not-allowed;
+
+            &:hover {
+                border: 1px solid baseColor.$color-gray-4;
+            }
+        }
+    }
+}

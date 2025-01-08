@@ -1,34 +1,14 @@
 import './App.css';
-import {
-    ErrorIcon,
-    PrimaryIcon,
-    SuccessIcon,
-    WarningIcon,
-    ArrowLeftIcon,
-    ArrowRightIcon,
-    ArrowDoubleLeftIcon,
-    ArrowDoubleRightIcon
-} from '@nan-design/icons';
-import SwitchCom from './components/Switch';
-import { Pagination } from 'antd';
-import { Pagination as Pag } from '@nan-design/react';
-import PaginationCom from './components/Pagination';
+import CascaderCom from './components/Cascader';
+import { Pagination } from '@nan-design/react';
 
 function App() {
     return (
         <>
-            <ErrorIcon></ErrorIcon>
-            <PrimaryIcon></PrimaryIcon>
-            <SuccessIcon></SuccessIcon>
-            <WarningIcon></WarningIcon>
-            <SwitchCom></SwitchCom>
-            <Pagination disabled total={100} showQuickJumper defaultPageSize={15}></Pagination>
-            {/* <PaginationCom></PaginationCom> */}
-            <Pag disabled total={100}></Pag>
-            <ArrowLeftIcon></ArrowLeftIcon>
-            <ArrowRightIcon></ArrowRightIcon>
-            <ArrowDoubleLeftIcon></ArrowDoubleLeftIcon>
-            <ArrowDoubleRightIcon></ArrowDoubleRightIcon>
+            <CascaderCom></CascaderCom>
+            <div>
+                <Pagination total={80} disabled></Pagination>
+            </div>
         </>
     );
 }
