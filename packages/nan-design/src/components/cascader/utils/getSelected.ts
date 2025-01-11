@@ -2,7 +2,7 @@
 import { Option } from '../interface';
 
 const getSelected = <T extends Option>(
-    defaultValue: T['value'][] = [],
+    defaultValue: T['value'][] | T['value'][][] = [],
     options: T[],
     selected: T[] = [],
     defaultValueIndex: number = 0

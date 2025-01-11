@@ -13,11 +13,28 @@
         border-right: 1px baseColor.$color-gray-1 solid;
 
         &__item {
+            // display: flex;
+            // align-items: center;
+            position: relative;
             min-width: 8em;
             padding: 5%;
             list-style: none;
             cursor: pointer;
             border-radius: 5px;
+
+            &__check {
+                margin-right: 5px;
+                margin-bottom: 1px;
+                vertical-align: middle;
+            }
+
+            &__icon {
+                position: absolute;
+                top: calc(50% - 5px);
+                right: 10px;
+                padding-left: 5px;
+                font-size: 10px;
+            }
 
             &:hover {
                 background-color: baseColor.$color-gray-1;

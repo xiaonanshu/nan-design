@@ -3,7 +3,10 @@ import React, { useEffect } from 'react';
 import { Option } from '../interface';
 import getSelected from '../utils/getSelected';
 
-export const useGetSelected = <T extends Option>(options: T[], defaultValue: T['value'][]) => {
+export const useGetSelected = <T extends Option>(
+    options: T[],
+    defaultValue: T['value'][] | T['value'][][]
+) => {
     const selected = React.useRef<T[]>(getSelected(defaultValue, options || []));
 
     const setSelectedOptions = (option: T | null, depth: number): void => {
@@ -32,6 +35,7 @@ export const useGetSelected = <T extends Option>(options: T[], defaultValue: T['
                 }
             }
         }
+        console.log(selected.current);
     };
     return [selected, setSelectedOptions] as const;
 };

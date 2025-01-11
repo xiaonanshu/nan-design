@@ -19,11 +19,12 @@
     &__inner {
         position: relative;
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
         width: 13em;
-        height: 2.3em;
+        min-height: 2.3em;
         padding: 0 11px;
-        line-height: 2.3em;
 
         // align-items: center;
         cursor: pointer;
@@ -62,8 +63,9 @@
 
     &__icon {
         position: absolute;
-        top: 0.3em;
+        top: 50%;
         right: 0.3em;
+        transform: translateY(-50%);
 
         &--clean {
             color: color.$text-color-ss;
@@ -82,7 +84,9 @@
 
     &__options-panel {
         position: absolute;
-        top: 2.7em;
+
+        // top: 2.7em;
+        top: calc(100% + 0.4em);
         display: flex;
         background-color: #fff;
         border: 1px baseColor.$color-gray-1 solid;

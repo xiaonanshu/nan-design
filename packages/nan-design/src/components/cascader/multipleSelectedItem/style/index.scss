@@ -1,0 +1,44 @@
+@use '../../../../styles/color/color.scss' as baseColor;
+@use '../../../../styles/tokens/text.scss' as text;
+@use '../../../../styles/tokens/color.scss' as color;
+
+.nan-cascader {
+    &-multiple {
+        &__item {
+            position: relative;
+            display: flex;
+            min-width: 4.2em;
+            height: 1.5em;
+            padding: 0 4px 0 8px;
+            margin-top: 5px;
+            margin-right: 5px;
+            margin-bottom: 2.5px;
+            line-height: 1.5em;
+            background-color: baseColor.$color-gray-1;
+            border-radius: 5px;
+
+            &__text {
+                margin-inline-end: 4px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &__icon {
+                display: flex;
+
+                &--delete {
+                    align-self: center;
+                    min-width: 0;
+                    font-size: 10px;
+                    line-height: 21px;
+                    color: color.$text-color-s;
+
+                    &:hover {
+                        color: color.$text-color-l;
+                    }
+                }
+            }
+        }
+    }
+}

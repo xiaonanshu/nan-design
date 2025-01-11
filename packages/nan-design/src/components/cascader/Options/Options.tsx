@@ -4,14 +4,22 @@ import { Option } from '../interface';
 import './style/index.scss';
 import { createCssSCope } from '../../../utils/bem';
 import { CascaderContext } from '../utils/context';
+import { ArrowRightIcon } from '../../../../../nan-design-icon/src';
 import classNames from 'classnames';
+import CheckBox from './CheckBox';
 
 const Options = <T extends Option>(props: OptionsProp<T>) => {
-    const { selected, options, onClick, depth } = props;
+    const { selected, options, onClick, depth, multipleOptions = [], multipleClick } = props;
     const bem = createCssSCope('cascader-panel');
     const context = useContext(CascaderContext);
 
-    const hoverHandle = (option: T) => {
+    const hoverHandle = (option: T, e: React.MouseEvent) => {
+        if (
+            (e.target as HTMLElement).nodeName === 'INPUT' &&
+            (e.target as HTMLInputElement).type === 'checkbox'
+        ) {
+            return;
+        }
         if (option.disabled || context?.expandTrigger !== 'hover') {
             return;
         }
@@ -21,12 +29,15 @@ const Options = <T extends Option>(props: OptionsProp<T>) => {
         onClick?.(option, depth);
     };
 
-    const clickHandle = (option: T) => {
-        if (option.disabled) {
+    const clickHandle = (option: T, e: React.MouseEvent) => {
+        if (
+            (e.target as HTMLElement).nodeName === 'INPUT' &&
+            (e.target as HTMLInputElement).type === 'checkbox'
+        ) {
             return;
         }
-        if (context?.changeOnSelect) {
-            context.setSelectedText(selected!.map((item) => item.label).join(' / '));
+        if (option.disabled) {
+            return;
         }
         onClick?.(option, depth);
         if (!option.children || option.children.length === 0) {
@@ -52,21 +63,35 @@ const Options = <T extends Option>(props: OptionsProp<T>) => {
                 {options?.map((option, index) => {
                     return (
                         <li
+                            key={`${depth}-${index}-${option.value}`}
                             className={classNames(
                                 bem('options__item', {
                                     disabled: option.disabled,
                                     selected: isSelected(option)
                                 })
                             )}
-                            key={`${depth}-${index}-${option.value}`}
-                            onClick={() => {
-                                clickHandle(option);
+                            onClick={(e) => {
+                                clickHandle(option, e);
                             }}
-                            onMouseEnter={() => {
-                                hoverHandle(option);
+                            onMouseEnter={(e) => {
+                                hoverHandle(option, e);
                             }}
                         >
-                            {option.label}
+                            {multipleOptions.length > 0 && (
+                                <CheckBox
+                                    checked={multipleOptions[index].checked}
+                                    onChange={() => {
+                                        multipleClick?.(option, multipleOptions[index].checked);
+                                    }}
+                                    disabledCheck={multipleOptions[index].disabledCheck}
+                                ></CheckBox>
+                            )}
+                            <span>{option.label}</span>
+                            {option.children && option.children.length > 0 && (
+                                <span className={bem('options__item__icon')}>
+                                    <ArrowRightIcon></ArrowRightIcon>
+                                </span>
+                            )}
                         </li>
                     );
                 })}

@@ -6,6 +6,7 @@ interface Option {
     label: string;
     disabled?: boolean;
     children?: Option[];
+    disableCheckbox?: boolean;
 }
 
 const options: Option[] = [
@@ -18,6 +19,7 @@ const options: Option[] = [
                 label: 'Hangzhou',
                 children: [
                     {
+                        disableCheckbox: true,
                         value: 'xihu',
                         label: 'West Lake'
                     }
@@ -71,12 +73,16 @@ const options: Option[] = [
                         label: 'Zhong Hua Men9'
                     }
                 ]
+            },
+            {
+                value: 'suzhou',
+                label: 'Suzhou'
             }
         ]
     }
 ];
 const CascaderCom = () => {
-    const onChange = (value: Option['value'][], option: Option[]) => {
+    const onChange = (value: Option['value'][][], option: Option[]) => {
         console.log(value, option);
     };
 
@@ -85,18 +91,20 @@ const CascaderCom = () => {
             <Cascader
                 options={options}
                 onChange={onChange}
-                defaultValue={['jiangsu', 'nanjing', 'zhonghuamen5']}
+                defaultValue={[['jiangsu', 'nanjing', 'zhonghuamen5']]}
                 autoFocus
                 placeholder="Please select"
-                expandTrigger="hover"
+                // expandTrigger="hover"
                 changeOnSelect
+                multiple={true}
             />
             <Cas
                 options={options}
-                defaultValue={['jiangsu', 'nanjing', 'zhonghuamen5']}
+                defaultValue={[['jiangsu', 'nanjing', 'zhonghuamen5']]}
                 onChange={onChange}
-                expandTrigger="hover"
-                changeOnSelect
+                // expandTrigger="hover"
+                multiple={true}
+                // changeOnSelect
             ></Cas>
         </div>
     );
