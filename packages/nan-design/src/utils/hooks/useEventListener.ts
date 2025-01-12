@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 export const useEventListener = <T extends Event>(
-    node: HTMLElement | Window,
+    node: HTMLElement | Window | null,
     event: string,
     callback: (event: T) => void,
     useCapture: boolean = false
