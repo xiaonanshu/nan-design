@@ -14,46 +14,10 @@ function App() {
     };
     return (
         <div style={{ width: '500px' }}>
-            <Input
-                // addonBefore={<span>1</span>}
-                // addonAfter={<span>1</span>}
-                value={value}
-                onChange={onchange}
-                defaultValue="ssss"
-                allowClear
-                maxLength={10}
-                // showCount
-                prefix={
-                    <span>
-                        <DeleteIcon></DeleteIcon>
-                    </span>
-                }
-                // suffix={
-                //     <span>
-                //         <DeleteIcon></DeleteIcon>
-                //     </span>
-                // }
-            ></Input>
-            <I
-                // addonBefore={<span>1</span>}
-                // addonAfter={<span>1</span>}
-                maxLength={10}
-                value={value}
-                defaultValue="ssss"
-                onChange={onchange}
-                allowClear
-                // showCount
-                prefix={
-                    <span>
-                        <DeleteIcon></DeleteIcon>
-                    </span>
-                }
-                // suffix={
-                //     <span>
-                //         <DeleteIcon></DeleteIcon>
-                //     </span>
-                // }
-            ></I>
+            <Input.Password showCount allowClear maxLength={16}></Input.Password>
+            <I.Password showCount allowClear maxLength={16} onChange={onchange}></I.Password>
+            <I addonAfter={<span>1</span>} addonBefore={<span>1</span>}></I>
+            <Input addonAfter={<span>1</span>} addonBefore={<span>1</span>}></Input>
         </div>
     );
 }

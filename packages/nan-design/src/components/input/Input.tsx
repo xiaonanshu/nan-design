@@ -25,7 +25,7 @@ const Input: React.FC<InputProp> = (prop) => {
     } = prop;
 
     const bem = createCssSCope('input');
-    const className = bem([size]);
+    const className = bem([size, prop.type]);
 
     const [inputValue, setInputValue] = useMergeState<string>(value, defaultValue);
     const inputRef = React.useRef<HTMLInputElement>(null);
@@ -66,7 +66,7 @@ const Input: React.FC<InputProp> = (prop) => {
         <span className={bem('panel', [size])}>
             {addonBefore && <span className={bem('addOn')}> {addonBefore} </span>}
             <span className={bem('box', { focus: inputIsFocus })}>
-                <span className={bem('prefix')}>{prefix && <span>{prefix}</span>}</span>
+                {prefix && <span className={bem('prefix')}>{prefix}</span>}
                 <input
                     maxLength={maxLength}
                     ref={inputRef}

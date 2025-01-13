@@ -13,3 +13,5 @@ export { default as ArrowUpIcon } from './Arrow_Up';
 export { default as CleanIcon } from './Clean';
 export { default as CleanFillIcon } from './Clean_FIll';
 export { default as DeleteIcon } from './Delete';
+export { default as ViewIcon } from './View';
+export { default as ViewOffIcon } from './View_Off';

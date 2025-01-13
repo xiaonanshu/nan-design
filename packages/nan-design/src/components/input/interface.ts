@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Size } from '../../utils/constant';
 
 export interface InputProp {
+    type?: string;
     addonAfter?: ReactNode; // 后缀
     addonBefore?: ReactNode; // 前缀
     allowClear?: boolean; // 允许清除
@@ -16,4 +17,13 @@ export interface InputProp {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // 输入框内容变化时的回调
     onPressEnter?: () => void; // 按下Enter的回调
     onClear?: () => void; // 按下清除按钮的回调
+}
+
+export interface InputPasswordProp extends InputProp {
+    visibilityToggle?: boolean; // 是否可以切换显隐
+    iconRender?: (visible: boolean) => ReactNode; // 自定义切换显隐按钮
+}
+
+export interface InputComponentType {
+    Password?: InputPasswordProp;
 }
