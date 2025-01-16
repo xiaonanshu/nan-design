@@ -21,6 +21,18 @@
     &--xl {
         font-size: 18px;
     }
+
+    > span {
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
 }
 
 .nan-input {
@@ -34,14 +46,10 @@
     &__addOn {
         &:first-child {
             border-right: none;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
         }
 
         &:last-child {
             border-left: none;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
         }
 
         display: flex;
@@ -49,7 +57,6 @@
         padding: 2px 11px;
         background-color: baseColor.$color-gray-2;
         border: 1px solid baseColor.$color-gray-3;
-        border-radius: 5px;
     }
 
     &__box {
@@ -69,8 +76,20 @@
             border-color: baseColor.$color-blue-7;
         }
 
-        &:only-child {
-            border-radius: 5px; // 设置你需要的 border-radius 值
+        &--error {
+            border-color: baseColor.$color-red;
+
+            &:hover {
+                border-color: rgba($color: baseColor.$color-red, $alpha: 50%);
+            }
+        }
+
+        &--warning {
+            border-color: baseColor.$color-yellow-2;
+
+            &:hover {
+                border-color: baseColor.$color-yellow-2;
+            }
         }
     }
 

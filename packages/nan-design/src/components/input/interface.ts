@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Size } from '../../utils/constant';
 
-export interface InputProp {
+export interface InputProp extends Omit<React.InputHTMLAttributes<HTMLElement>, 'size' | 'prefix'> {
     type?: string;
     addonAfter?: ReactNode; // 后缀
     addonBefore?: ReactNode; // 前缀
@@ -14,6 +14,7 @@ export interface InputProp {
     disabled?: boolean; //禁用
     size?: Size; // 大小
     value?: string; // 值
+    status?: 'error' | 'warning'; //校验状态
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // 输入框内容变化时的回调
     onPressEnter?: () => void; // 按下Enter的回调
     onClear?: () => void; // 按下清除按钮的回调

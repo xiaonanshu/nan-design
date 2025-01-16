@@ -18,10 +18,11 @@ const Input: React.FC<InputProp> = (prop) => {
         showCount = false,
         size = 'm',
         value,
+        status,
         onChange,
         onPressEnter,
         onClear,
-        ...resetProps
+        ...restProps
     } = prop;
 
     const bem = createCssSCope('input');
@@ -65,19 +66,27 @@ const Input: React.FC<InputProp> = (prop) => {
     return (
         <span className={bem('panel', [size])}>
             {addonBefore && <span className={bem('addOn')}> {addonBefore} </span>}
-            <span className={bem('box', { focus: inputIsFocus })}>
+            <span
+                className={bem('box', {
+                    focus: inputIsFocus,
+                    error: status === 'error',
+                    warning: status === 'warning'
+                })}
+            >
                 {prefix && <span className={bem('prefix')}>{prefix}</span>}
                 <input
                     maxLength={maxLength}
                     ref={inputRef}
                     className={className}
-                    {...resetProps}
+                    {...restProps}
                     value={inputValue}
                     onChange={valueChange}
-                    onFocus={() => {
+                    onFocus={(e) => {
+                        restProps.onFocus?.(e);
                         setInputIsFocus(true);
                     }}
-                    onBlur={() => {
+                    onBlur={(e) => {
+                        restProps.onBlur?.(e);
                         setInputIsFocus(false);
                     }}
                 ></input>
