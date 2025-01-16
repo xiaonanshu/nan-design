@@ -35,5 +35,8 @@
   "dependencies": {
     "@nan-design/shared": "workspace:^",
     "classnames": "^2.5.1"
+  },
+  "devDependencies": {
+    "async-validator": "^4.2.5"
   }
 }

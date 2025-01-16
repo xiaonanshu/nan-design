@@ -1,0 +1,62 @@
+@use '../../../styles/color/color.scss' as baseColor;
+@use '../../../styles/tokens/text.scss' as text;
+@use '../../../styles/tokens/color.scss' as color;
+
+.nan-form {
+    max-width: 70vw;
+    max-height: 70vh;
+    overflow: auto;
+
+    &--s {
+        font-size: 12px;
+    }
+
+    &--m {
+        font-size: 14px;
+    }
+}
+
+.nan-form-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    &__label {
+        position: relative;
+        min-width: 5em;
+        text-align: justify;
+        text-align-last: justify;
+
+        &::before {
+            display: inline-block;
+            width: 10px;
+            margin-right: 5px;
+            content: '';
+        }
+
+        &--required {
+            &::before {
+                display: inline-block;
+                margin-right: 5px;
+                font-family: SimSun, sans-serif;
+                color: red;
+                content: '*';
+            }
+        }
+
+        &::after {
+            display: inline;
+            margin-right: 5px;
+            font-family: SimSun, sans-serif;
+            content: ':';
+        }
+    }
+
+    &__box {
+        flex: 1;
+    }
+
+    &__error {
+        color: baseColor.$color-red;
+    }
+}
