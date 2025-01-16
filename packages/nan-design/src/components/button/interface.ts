@@ -2,6 +2,7 @@ import React from 'react';
 import { Type, Size, Shape, Status } from '../../utils/constant';
 
 export interface ButtonBaseProps {
+    htmlType?: 'button' | 'reset' | 'submit'; //设置 button 原生的 type 值
     type?: Type; //按钮类型：主要 | 次要 | 线框
     size?: Size; //按钮大小
     shape?: Shape; //按钮形状：全圆角 | 圆形 | 四方形 不设置为默认类型

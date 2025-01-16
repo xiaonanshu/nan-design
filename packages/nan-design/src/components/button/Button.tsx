@@ -5,6 +5,7 @@ import { isFunction } from '../../utils/helper';
 
 const Button: React.FC<ButtonBaseProps> = (props) => {
     const {
+        htmlType = 'button',
         type = 'primary',
         size = 'l',
         shape = 'default',
@@ -41,6 +42,7 @@ const Button: React.FC<ButtonBaseProps> = (props) => {
     };
 
     const buttonProps = {
+        type: htmlType,
         disabled,
         className,
         onClick: handleClick,
