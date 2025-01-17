@@ -33,11 +33,11 @@ type Option = {
     label?: React.ReactNode;
     disabled?: boolean;
     children?: Option[];
+    disableCheckbox?: boolean;
 };
 
 type MultipleSelectedOption<T extends Option = Option> = Omit<T, 'checked'> & {
     checked: 'checked' | 'unCheck' | 'indeterminate';
-    disabledCheck?: boolean;
 };
 
 type CascaderContextType<T extends Option> =

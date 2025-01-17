@@ -83,7 +83,7 @@ const Options = <T extends Option>(props: OptionsProp<T>) => {
                                     onChange={() => {
                                         multipleClick?.(option, multipleOptions[index].checked);
                                     }}
-                                    disabledCheck={multipleOptions[index].disabledCheck}
+                                    disabledCheck={multipleOptions[index].disableCheckbox}
                                 ></CheckBox>
                             )}
                             <span>{option.label}</span>

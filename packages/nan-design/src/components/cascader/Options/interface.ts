@@ -14,7 +14,7 @@ interface OptionsProp<T extends Option> {
 interface CheckBoxProp<T extends Option> {
     checked: MultipleSelectedOption<T>['checked'];
     onChange?: () => void;
-    disabledCheck?: MultipleSelectedOption<T>['disabledCheck'];
+    disabledCheck?: boolean;
 }
 
 export type { OptionsProp, CheckBoxProp };
