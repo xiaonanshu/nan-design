@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react';
 import { Input, Form } from 'antd';
-import { Input as I, Form as F, Button } from '@nan-design/react';
+import { Input as I, Form as F, Button, Cascader } from '@nan-design/react/src/index';
 import { useState } from 'react';
-import { DeleteIcon } from '@nan-design/icons';
+import { DeleteIcon } from '@nan-design/icons/src/index';
 import { FormRef } from '../../packages/nan-design/src/components/form/interface';
+import CascaderCom from './components/Cascader';
 
 function App() {
     const [value, setValue] = useState('100');
@@ -58,6 +59,7 @@ function App() {
                     <Button htmlType="submit">submit</Button>
                 </F.Item>
             </F>
+            <CascaderCom></CascaderCom>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 {
   "name": "@nan-design/react",
-  "version": "0.0.0",
+  "version": "0.1.2",
   "description": "nan-design react component library",
   "keywords": [
     "react",
@@ -22,7 +22,16 @@
   "module": "",
   "types": "",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/nan-design.mjs"
+    },
+    "./src/index": "./src/index.ts"
+  },
+  "sideEffects": [
+    "dist/style.css"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist",
@@ -33,8 +42,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@nan-design/shared": "workspace:^",
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "@nan-design/icons": "workspace:^"
   },
   "devDependencies": {
     "async-validator": "^4.2.5"

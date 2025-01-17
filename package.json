@@ -7,7 +7,7 @@
     "demo:build": "pnpm --filter @nan-design/demo build",
     "doc:dev": "pnpm --filter @nan-design/docs dev",
     "build": "pnpm --filter @nan-design/react build",
-    "shared:build": "pnpm --filter @nan-design/shared build",
+    "icons:build": "pnpm --filter @nan-design/icons build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:style": "stylelint ./**/*.{css,scss,vue,html}",
@@ -21,6 +21,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.11",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.13.0",
