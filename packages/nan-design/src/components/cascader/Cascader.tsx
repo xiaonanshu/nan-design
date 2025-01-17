@@ -1,6 +1,6 @@
 import React from 'react';
 import { createCssSCope } from '../../utils/bem';
-import { ArrowDownIcon, CleanFillIcon } from '../../../../nan-design-icon/src';
+import { ArrowDownIcon, CleanFillIcon } from '@nan-design/icons';
 import { CascaderProp, Option, CascaderContextType, MultipleSelectedOption } from './interface';
 import Options from './Options/Options';
 import { CascaderContext } from './utils/context';
@@ -442,6 +442,8 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
                 </div>
                 <div className={bem('options-panel')} ref={optionsRef}>
                     {showOptions &&
+                        options &&
+                        options.length > 0 &&
                         showingOptions.map((options, index) => {
                             return (
                                 <Options

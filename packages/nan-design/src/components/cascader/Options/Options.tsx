@@ -4,7 +4,7 @@ import { Option } from '../interface';
 import './style/index.scss';
 import { createCssSCope } from '../../../utils/bem';
 import { CascaderContext } from '../utils/context';
-import { ArrowRightIcon } from '../../../../../nan-design-icon/src';
+import { ArrowRightIcon } from '@nan-design/icons';
 import classNames from 'classnames';
 import CheckBox from './CheckBox';
 
