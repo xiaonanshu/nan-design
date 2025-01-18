@@ -19,11 +19,11 @@
     "build": "vite build"
   },
   "main": "",
-  "module": "",
-  "types": "./dist/es/index.d.ts",
+  "module": "./dist/es/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/es/index.mjs"
+      "import": "./dist/es/index.mjs",
+      "types":"./dist/es/index.d.ts"
     },
     "./src/index": "./src/index.ts",
     "./style": "./dist/es/style.css"
