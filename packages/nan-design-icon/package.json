@@ -1,6 +1,6 @@
 {
   "name": "@nan-design/icons",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "nan-design react component library icons",
   "keywords": [
     "react",
@@ -24,10 +24,10 @@
   },
   "main": "",
   "module": "",
-  "types": "./src/index.ts",
+  "types": "./dist/es/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/nan-design-icons.mjs"
+      "import": "./dist/es/index.mjs"
     },
     "./src/index": "./src/index.ts"
   },
