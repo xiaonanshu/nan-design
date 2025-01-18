@@ -1,6 +1,6 @@
 {
   "name": "@nan-design/icons",
-  "version": "0.0.0",
+  "version": "0.1.4",
   "description": "nan-design react component library icons",
   "keywords": [
     "react",
@@ -16,14 +16,19 @@
   "bugs": {
     "url": "https://github.com/ZSmileL/nan-design/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build"
   },
-  "main": "",
-  "module": "",
-  "types": "",
+  "module": "./dist/es/index.mjs",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/es/index.mjs",
+      "types": "./dist/es/index.d.ts"
+    },
+    "./src/index": "./src/index.ts"
   },
   "files": [
     "dist",

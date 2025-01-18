@@ -19,7 +19,6 @@ const options: Option[] = [
                 label: 'Hangzhou',
                 children: [
                     {
-                        disableCheckbox: true,
                         value: 'xihu',
                         label: 'West Lake'
                     }
@@ -34,11 +33,17 @@ const options: Option[] = [
             {
                 value: 'nanjing',
                 label: 'Nanjing',
-
+                disableCheckbox: true,
                 children: [
                     {
                         value: 'zhonghuamen1',
-                        label: 'Zhong Hua Men1'
+                        label: 'Zhong Hua Men1',
+                        children: [
+                            {
+                                value: '1',
+                                label: '2'
+                            }
+                        ]
                     },
                     {
                         value: 'zhonghuamen2',
@@ -76,7 +81,13 @@ const options: Option[] = [
             },
             {
                 value: 'suzhou',
-                label: 'Suzhou'
+                label: 'Suzhou',
+                children: [
+                    {
+                        value: 's',
+                        label: 's'
+                    }
+                ]
             }
         ]
     }
@@ -91,7 +102,10 @@ const CascaderCom = () => {
             <Cascader
                 options={options}
                 onChange={onChange}
-                defaultValue={[['jiangsu', 'nanjing', 'zhonghuamen5']]}
+                defaultValue={[
+                    ['jiangsu', 'nanjing', 'zhonghuamen5'],
+                    ['jiangsu', 'nanjing', 'zhonghuamen1']
+                ]}
                 autoFocus
                 placeholder="Please select"
                 // expandTrigger="hover"
@@ -100,7 +114,10 @@ const CascaderCom = () => {
             />
             <Cas
                 options={options}
-                defaultValue={[['jiangsu', 'nanjing', 'zhonghuamen5']]}
+                defaultValue={[
+                    ['jiangsu', 'nanjing', 'zhonghuamen5'],
+                    ['jiangsu', 'nanjing', 'zhonghuamen1']
+                ]}
                 onChange={onChange}
                 // expandTrigger="hover"
                 multiple={true}

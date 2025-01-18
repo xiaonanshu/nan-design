@@ -8,16 +8,17 @@ const CheckBox: React.FC<CheckBoxProp<Option>> = (props) => {
     const bem = createCssSCope('cascader-panel');
     const ref = useRef<HTMLInputElement>(null);
     useEffect(() => {
-        if (ref.current) {
+        if (ref.current && !disabledCheck) {
             ref.current.indeterminate = checked === 'indeterminate';
         }
     }, [checked]);
     return (
         <input
             type="checkbox"
-            className={bem('options__item__check')}
+            className={bem('options__item__check', { disabledCheck })}
             ref={ref}
-            checked={checked === 'checked'}
+            disabled={disabledCheck}
+            checked={!disabledCheck && checked === 'checked'}
             onChange={(e) => {
                 if (disabledCheck) {
                     return;

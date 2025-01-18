@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PageSizeSlectorProps from './interface';
 import './style/index.scss';
 import { createCssSCope } from '../../../utils/bem';
-import { ArrowDownIcon, ArrowUpIcon } from '../../../../../nan-design-icon/src';
+import { ArrowDownIcon, ArrowUpIcon } from '@nan-design/icons';
 import { useEventListener } from '../../../utils/hooks/useEventListener';
 
 const PageSizeSlector: React.FC<PageSizeSlectorProps> = (props) => {

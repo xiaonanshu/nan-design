@@ -1,6 +1,6 @@
 import React from 'react';
 import { createCssSCope } from '../../utils/bem';
-import { ArrowDownIcon, CleanFillIcon } from '../../../../nan-design-icon/src';
+import { ArrowDownIcon, CleanFillIcon } from '@nan-design/icons';
 import { CascaderProp, Option, CascaderContextType, MultipleSelectedOption } from './interface';
 import Options from './Options/Options';
 import { CascaderContext } from './utils/context';
@@ -30,7 +30,7 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
     const optionsRef = React.useRef<HTMLDivElement>(null);
     const cleanRef = React.useRef<HTMLSpanElement>(null);
     const dropRef = React.useRef<HTMLSpanElement>(null);
-    const [selected, setSelected] = useGetSelected(options, defaultValue);
+    const [selected, setSelected] = useGetSelected(options, multiple ? [] : defaultValue);
     const [allOption, setAllOption] = React.useState<T[]>(options);
     // 显示选择内容
     const [selectedText, setSelectedText] = React.useState<string>(
@@ -48,6 +48,9 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
 
     // 对象，类型为OptionTree ，每个OptionNode在原先的基础上添加了它的直接父级选项作为属性，方便向上查找
     const tree = React.useRef<OptionTree>({});
+
+    // 是否已初始化，解决useEffect执行两次导致init执行两次的问题
+    const isInit = React.useRef<boolean>(false);
 
     const contextValue: CascaderContextType<T> = {
         options,
@@ -111,7 +114,10 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
         if (multiple) {
             tree.current = getTree(options);
         }
-        init(defaultValue);
+        if (!isInit.current) {
+            init(defaultValue);
+            isInit.current = true;
+        }
     }, [defaultValue]);
 
     // 选择完成时，仅针对单选
@@ -135,8 +141,8 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
      */
     const addShowingOption = (option: T, depth: number) => {
         // 展示的最深层子选项，在它外层的要展示，在它里层的不展示，如果没有下一层就表示选中了某个值，这时要使它只有第一层的展示数据
+        setSelected(option, depth);
         if (!multiple) {
-            setSelected(option, depth);
             if (changeOnSelect) {
                 setSelectedText(selected.current.map((item) => item.label).join(' / '));
             }
@@ -205,6 +211,7 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
     // 多选逻辑
     type OptionNode = T & {
         parent: OptionNode | null;
+        disableCheckbox?: boolean;
     };
     type OptionTree = { [key: string]: OptionNode | null };
     const [curOptions, setCurOptions] = React.useState<OptionNode[]>([]);
@@ -226,15 +233,20 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
 
         /**
          * 针对一个选项
+         * 如果其某父节点设置了disableCheckbox：curOptions中的某个节点是它的某代父节点且是设置了disableCheckbox的节点或其父节点父节点，那么此节点状态为'unCheck'
          * 如果它本身就在curOptions中或者它的父代节点在curOptions中，那么它的子选项肯定全选中，即他的状态为checked
          * 如果它的某个子代节点在curOptions中，那么它的状态为indeterminate
          */
         // 它本身就在curOptions中或者它的父代节点在curOptions中
         optionsWithState.forEach((item) => {
             let node = tree.current[item.value];
+            let flag = false; // 表示是否已经遍历到或者超过设置了disableCheckbox（如果有）的节点
             while (node) {
+                if (node.disableCheckbox) {
+                    flag = true;
+                }
                 if (curOptionsValues.has(node?.value)) {
-                    item.checked = 'checked';
+                    item.checked = flag ? 'unCheck' : 'checked';
                     break;
                 }
                 node = node.parent;
@@ -242,11 +254,16 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
         });
 
         // 它的某个子代节点在curOptions中，(它是curOptions中某个节点的父代节点)
+        // 如果这个子节点的某代父节点设置了disableCheckbox并且这个节点是它的子节点（设置了disableCheckbox在它与curOptions中的子节点的中间）那么它为'unCheck'
         curOptions.forEach((item) => {
             let node = item;
+            let flag = false; // 表示是否已经遍历到或者超过设置了disableCheckbox（如果有）的节点
             while (node) {
+                if (node.disableCheckbox) {
+                    flag = true;
+                }
                 const index = optionsWithState.findIndex((item) => item.value === node.value);
-                if (index !== -1 && optionsWithState[index].checked === 'unCheck') {
+                if (index !== -1 && optionsWithState[index].checked === 'unCheck' && !flag) {
                     optionsWithState[index].checked = 'indeterminate';
                     break;
                 }
@@ -278,67 +295,68 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
 
     // 选择一个节点
     const checked = (option: T | OptionNode) => {
-        // 首先将curOPtions中原有的option子节点去掉
-        // 其子节点全选，向下影响
         const node = tree.current[option.value] as OptionNode;
-        const newCurOptions: OptionNode[] = curOptions.slice();
-        newCurOptions.push(node);
-        let last = node.parent;
+        let removeNode = {};
 
-        while (true) {
-            if (
-                last &&
-                last.children?.length ===
-                    newCurOptions.filter(
-                        (option) => option.parent && option.parent.value === last?.value
-                    ).length
-            ) {
-                newCurOptions.push(last);
-                last = last.parent;
-            } else {
-                break;
+        setCurOptions((prevCurOptions) => {
+            // 首先将curOptions中原有的option子节点去掉
+            // 其子节点全选，向下影响
+            let newCurOptions: OptionNode[] = prevCurOptions.slice();
+            newCurOptions.push(node);
+            let last = node.parent;
+
+            while (true) {
+                if (
+                    last &&
+                    last.children?.filter((item) => !item.disableCheckbox).length ===
+                        newCurOptions.filter(
+                            (option) => option.parent && option.parent.value === last?.value
+                        ).length
+                ) {
+                    newCurOptions.push(last);
+                    last = last.parent;
+                } else {
+                    break;
+                }
             }
-        }
-
-        setCurOptions(newCurOptions);
-        removeChildren(node);
-        if (!last) {
-            removeChildren(newCurOptions[newCurOptions.length - 1]);
-        } else if (last.value !== node.parent?.value) {
-            removeChildren(last);
-        }
+            removeNode = newCurOptions[newCurOptions.length - 1];
+            newCurOptions = removeChildren(node, newCurOptions);
+            newCurOptions = removeChildren(newCurOptions[newCurOptions.length - 1], newCurOptions);
+            return newCurOptions;
+        });
     };
 
-    // 删除一个节点的所有子节点
-    const removeChildren = (option: OptionNode | null) => {
+    // 删除一个节点的所有子节点 同样考虑disableCheckbox：如果设置了，其子节点应该不在删除的范围内
+    const removeChildren = (option: OptionNode | null, cur: OptionNode[]) => {
         if (!option) {
-            return null;
+            return cur;
         }
-        setCurOptions((cur) => {
-            return cur.filter((item) => {
-                let isChild = false;
-                let last = item.parent;
-                while (last) {
-                    if (last.value === option.value) {
-                        isChild = true;
-                        break;
-                    }
-                    last = last.parent;
+        return cur.filter((item) => {
+            let isChild = false;
+            let last = item.parent;
+            while (last) {
+                if (last.disableCheckbox) {
+                    break;
                 }
-                return !isChild;
-            });
+                if (last.value === option.value) {
+                    isChild = true;
+                    break;
+                }
+                last = last.parent;
+            }
+            return !isChild;
         });
     };
 
     // 取消选择一个节点
     const unCheck = (option: T | OptionNode) => {
         const node = tree.current[option.value] as OptionNode;
-        removeChildren(node);
+        setCurOptions(removeChildren(node, curOptions));
         if (curOptions.some((item) => item.value === option.value)) {
             // cur里面有这个，表示其父节点的子节点未全选中，
             setCurOptions(curOptions.filter((item) => item.value !== option.value));
         } else {
-            // cur里面没有这个而又是选中状态，表示其父节点的子节点全选中，这时需要将其兄弟节点全部放入cur并将其父节点从cur中移除
+            // cur里面没有这个而又是选中状态，表示其父节点的子节点全选中，这时需要将其兄弟节点(未设置disableCheckbox)全部放入cur并将其父节点从cur中移除
             const last = node.parent;
             if (!last) {
                 return;
@@ -347,7 +365,9 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
             setCurOptions((cur) => {
                 return cur.concat(
                     last.children
-                        ?.filter((item: Option) => item.value !== option.value)
+                        ?.filter(
+                            (item: Option) => item.value !== option.value && !item.disableCheckbox
+                        )
                         ?.map((item: Option) => tree.current[item.value]) as OptionNode[]
                 );
             });
@@ -442,6 +462,8 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
                 </div>
                 <div className={bem('options-panel')} ref={optionsRef}>
                     {showOptions &&
+                        options &&
+                        options.length > 0 &&
                         showingOptions.map((options, index) => {
                             return (
                                 <Options

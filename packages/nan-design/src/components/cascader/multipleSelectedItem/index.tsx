@@ -3,7 +3,7 @@ import MultipleItemProps from './interface';
 import './style/index.scss';
 import { Option } from '../interface';
 import { createCssSCope } from '../../../utils/bem';
-import { DeleteIcon } from '../../../../../nan-design-icon/src';
+import { DeleteIcon } from '@nan-design/icons';
 
 const MultipleItem = <T extends Option & { disableCheckbox?: boolean }>(
     props: MultipleItemProps<T>

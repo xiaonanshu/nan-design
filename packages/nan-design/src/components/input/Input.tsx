@@ -2,7 +2,7 @@ import React from 'react';
 import { InputProp } from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { useMergeState } from '../../utils/hooks/useMergeState';
-import { CleanFillIcon } from '../../../../nan-design-icon/src';
+import { CleanFillIcon } from '@nan-design/icons';
 import { useEventListener } from '../../utils/hooks/useEventListener';
 import { resolveOnChange } from './utils';
 

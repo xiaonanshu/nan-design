@@ -9,7 +9,7 @@ import {
     ArrowRightIcon,
     ArrowDoubleLeftIcon,
     ArrowDoubleRightIcon
-} from '../../../../nan-design-icon/src';
+} from '@nan-design/icons';
 import classNames from 'classnames';
 
 const Pagination: React.FC<PaginationProps> = (props) => {

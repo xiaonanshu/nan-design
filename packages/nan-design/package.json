@@ -1,6 +1,6 @@
 {
   "name": "@nan-design/react",
-  "version": "0.0.0",
+  "version": "0.1.5",
   "description": "nan-design react component library",
   "keywords": [
     "react",
@@ -19,10 +19,17 @@
     "build": "vite build"
   },
   "main": "",
-  "module": "",
-  "types": "",
+  "module": "./dist/es/index.mjs",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/es/index.mjs",
+      "types":"./dist/es/index.d.ts"
+    },
+    "./src/index": "./src/index.ts",
+    "./style": "./dist/es/style.css"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist",
@@ -33,10 +40,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@nan-design/shared": "workspace:^",
-    "classnames": "^2.5.1"
-  },
-  "devDependencies": {
+    "classnames": "^2.5.1",
+    "@nan-design/icons": "workspace:^",
     "async-validator": "^4.2.5"
   }
 }

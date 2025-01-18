@@ -4,7 +4,7 @@ import { Option } from '../interface';
 import './style/index.scss';
 import { createCssSCope } from '../../../utils/bem';
 import { CascaderContext } from '../utils/context';
-import { ArrowRightIcon } from '../../../../../nan-design-icon/src';
+import { ArrowRightIcon } from '@nan-design/icons';
 import classNames from 'classnames';
 import CheckBox from './CheckBox';
 
@@ -83,7 +83,7 @@ const Options = <T extends Option>(props: OptionsProp<T>) => {
                                     onChange={() => {
                                         multipleClick?.(option, multipleOptions[index].checked);
                                     }}
-                                    disabledCheck={multipleOptions[index].disabledCheck}
+                                    disabledCheck={multipleOptions[index].disableCheckbox}
                                 ></CheckBox>
                             )}
                             <span>{option.label}</span>

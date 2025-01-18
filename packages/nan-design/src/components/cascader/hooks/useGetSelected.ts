@@ -35,7 +35,6 @@ export const useGetSelected = <T extends Option>(
                 }
             }
         }
-        console.log(selected.current);
     };
     return [selected, setSelectedOptions] as const;
 };

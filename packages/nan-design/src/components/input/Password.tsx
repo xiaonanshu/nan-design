@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputPasswordProp } from './interface';
 import { Input } from './Input';
-import { ViewIcon, ViewOffIcon } from '../../../../nan-design-icon/src';
+import { ViewIcon, ViewOffIcon } from '@nan-design/icons';
 
 const Password: React.FC<InputPasswordProp> = (props) => {
     const { value, visibilityToggle = true, iconRender, suffix, ...restProps } = props;
