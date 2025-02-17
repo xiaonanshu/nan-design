@@ -36,9 +36,6 @@ importers:
       '@types/gulp-autoprefixer':
         specifier: ^0.0.37
         version: 0.0.37
-      '@types/gulp-less':
-        specifier: ^0.0.36
-        version: 0.0.36
       '@types/gulp-sass':
         specifier: ^5.0.4
         version: 5.0.4
@@ -87,9 +84,6 @@ importers:
       gulp-autoprefixer:
         specifier: ^8.0.0
         version: 8.0.0(gulp@5.0.0)
-      gulp-less:
-        specifier: ^5.0.0
-        version: 5.0.0
       gulp-sass:
         specifier: ^6.0.0
         version: 6.0.0
@@ -1459,9 +1453,6 @@ packages:
 
   '@types/gulp-autoprefixer@0.0.37':
     resolution: {integrity: sha512-GLPDrYHQ7+7i9cHEGIkV4eB/iYF5I9YylpLxsFbHTsR+rbZ17nlZrwWfzolSvpHfjk3u0HIO9FrJdCr182SgeQ==}
-
-  '@types/gulp-less@0.0.36':
-    resolution: {integrity: sha512-BnNmdOZI/BOpMmXAF1S4z5xKSzMN5P9yhgU0FEwWyniDjyL4EmDwqEeEs7InfVz7YATNniMwUcg2tQPYfhYH9w==}
 
   '@types/gulp-sass@5.0.4':
     resolution: {integrity: sha512-wDgpyM9fRq/k7kn1ZGcoY69Pj8+AlB50U9TKmBdbmHUduy+4b7WZ1zrDl4df43W+IqJegEgen6XAKO2+/RQILA==}
@@ -2936,10 +2927,6 @@ packages:
     resolution: {integrity: sha512-RtMIitkT8DEMZZygHK2vEuLPqLPAFB4sntSxg4NoDta7ciwGZ18l7JuhCTiS5deOJi2IoK0btE+hs6R4sfj7AA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-
-  gulp-less@5.0.0:
-    resolution: {integrity: sha512-W2I3TewO/By6UZsM/wJG3pyK5M6J0NYmJAAhwYXQHR+38S0iDtZasmUgFCH3CQj+pQYw/PAIzxvFvwtEXz1HhQ==}
-    engines: {node: '>=6'}
 
   gulp-sass@6.0.0:
     resolution: {integrity: sha512-FGb4Uab4jnH2GnSfBGd6uW3+imvNodAGfsjGcUhEtpNYPVx+TK2tp5uh7MO0sSR7aIf1Sm544werc+zV7ejHHw==}
@@ -7300,10 +7287,6 @@ snapshots:
     dependencies:
       '@types/node': 22.8.1
 
-  '@types/gulp-less@0.0.36':
-    dependencies:
-      '@types/node': 22.8.1
-
   '@types/gulp-sass@5.0.4':
     dependencies:
       '@types/node': 22.8.1
@@ -8160,6 +8143,7 @@ snapshots:
   copy-anything@2.0.6:
     dependencies:
       is-what: 3.14.1
+    optional: true
 
   copy-props@4.0.0:
     dependencies:
@@ -9068,15 +9052,6 @@ snapshots:
       v8flags: 4.0.1
       yargs: 16.2.0
 
-  gulp-less@5.0.0:
-    dependencies:
-      less: 4.2.2
-      object-assign: 4.1.1
-      plugin-error: 1.0.1
-      replace-ext: 2.0.0
-      through2: 4.0.2
-      vinyl-sourcemaps-apply: 0.2.1
-
   gulp-sass@6.0.0:
     dependencies:
       lodash.clonedeep: 4.5.0
@@ -9568,7 +9543,8 @@ snapshots:
       call-bind: 1.0.7
       get-intrinsic: 1.2.4
 
-  is-what@3.14.1: {}
+  is-what@3.14.1:
+    optional: true
 
   is-windows@1.0.2: {}
 
@@ -9709,6 +9685,7 @@ snapshots:
       mime: 1.6.0
       needle: 3.3.1
       source-map: 0.6.1
+    optional: true
 
   levn@0.4.1:
     dependencies:
