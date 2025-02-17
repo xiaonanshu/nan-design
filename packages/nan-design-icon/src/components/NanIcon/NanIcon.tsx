@@ -22,7 +22,8 @@ const NanIcon = React.forwardRef<HTMLSpanElement, NanIconComponentProps>(
         return (
             <span
                 className={clsx('nan-icon', className)}
-                style={{ display: 'inline-flex', ...style }}
+                // style={{ display: 'inline-flex', ...style }}
+                style={style}
                 aria-label={name}
                 {...restProps}
                 ref={ref}
