@@ -3,6 +3,7 @@ import { FormProps, FormRef } from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { FormContext } from './utils/context';
 import useFileds from './hooks/useFields';
+import './style/index.scss';
 
 const Form = React.forwardRef<FormRef, FormProps>((props, ref) => {
     const {
@@ -12,7 +13,8 @@ const Form = React.forwardRef<FormRef, FormProps>((props, ref) => {
         children,
         disabled = false,
         onFinish,
-        onFinishFailed
+        onFinishFailed,
+        ...restFormProps
     } = props;
 
     const bem = createCssSCope('form');
@@ -50,7 +52,7 @@ const Form = React.forwardRef<FormRef, FormProps>((props, ref) => {
 
     return (
         <>
-            <form className={className} name={name} onSubmit={submitForm}>
+            <form className={className} name={name} onSubmit={submitForm} {...restFormProps}>
                 <FormContext.Provider value={context}>{children}</FormContext.Provider>
             </form>
         </>

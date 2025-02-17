@@ -85,10 +85,10 @@
         }
 
         &--warning {
-            border-color: baseColor.$color-yellow-2;
+            border-color: baseColor.$color-yellow;
 
             &:hover {
-                border-color: baseColor.$color-yellow-2;
+                border-color: rgba($color: baseColor.$color-yellow, $alpha: 50%);
             }
         }
     }

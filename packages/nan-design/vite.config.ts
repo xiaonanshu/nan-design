@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslintPlugin from 'vite-plugin-eslint';
@@ -18,7 +19,25 @@ export default defineConfig({
             outDir: ['./dist/es', './dist/lib'],
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsconfigPath: '../../tsconfig.build.json'
-        })
+        }),
+        {
+            name: 'style',
+            generateBundle(config, bundle) {
+                //这里可以获取打包后的文件目录以及代码code
+                const keys = Object.keys(bundle);
+
+                for (const key of keys) {
+                    const bundler: any = bundle[key as any];
+                    //rollup内置方法,将所有输出文件code中的.less换成.css,因为我们当时没有打包less文件
+
+                    this.emitFile({
+                        type: 'asset',
+                        fileName: key, //文件名名不变
+                        source: bundler.code.replace(/\.scss/g, '.css')
+                    });
+                }
+            }
+        }
     ],
     build: {
         lib: {
@@ -29,6 +48,7 @@ export default defineConfig({
         },
         outDir: 'es',
         minify: false,
+        emptyOutDir: false,
         rollupOptions: {
             external: [
                 // 除了 @nan-design/shared，未来可能还会依赖其他内部模块，不如用正则表达式将 @nan-design 开头的依赖项一起处理掉
@@ -37,7 +57,8 @@ export default defineConfig({
                 'react-dom',
                 'react/jsx-runtime',
                 'classnames',
-                'async-validator'
+                'async-validator',
+                /\.scss/
             ],
             output: [
                 {
@@ -66,5 +87,8 @@ export default defineConfig({
                 }
             ]
         }
+    },
+    test: {
+        environment: 'jsdom'
     }
 });

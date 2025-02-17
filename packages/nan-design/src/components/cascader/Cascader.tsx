@@ -9,6 +9,7 @@ import { useEventListener } from '../../utils/hooks/useEventListener';
 import getShowingOptions from './utils/getShowingOptions';
 import MultipleItem from './multipleSelectedItem';
 import { isArray } from '../../utils/helper';
+import './style/index.scss';
 
 const Cascader = <T extends Option>(props: CascaderProp<T>) => {
     type Value = T['value'];

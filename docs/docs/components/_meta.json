@@ -17,5 +17,20 @@
     "type": "file",
     "name": "mds/Pagination",
     "label": "Pagination"
+},
+{
+    "type": "file",
+    "name": "mds/Cascader",
+    "label": "Cascader"
+},
+{
+    "type": "file",
+    "name": "mds/Input",
+    "label": "Input"
+},
+{
+    "type": "file",
+    "name": "mds/Form",
+    "label": "Form"
 }
 ]

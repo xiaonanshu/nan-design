@@ -1,0 +1,501 @@
+# Cascader级联选择器
+
+## 基本使用
+```tsx
+
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Cascader 
+    options={options} 
+    onChange={onChange} 
+    placeholder="Please select" />
+  </div>
+);
+
+export default App;
+```
+## 默认值
+通过`defaultValue`设置默认值
+```tsx
+
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Cascader
+    defaultValue={
+                    ['jiangsu', 'nanjing', 'zhonghuamen']
+                }
+    allowClear 
+    options={options} 
+    onChange={onChange} 
+    placeholder="Please select" />
+  </div>
+);
+
+export default App;
+```
+## 大小
+通过`size`设置大小，可选值为`'s'`、`'m'`，默认为`'m'`
+```tsx
+import React from 'react';
+import { Cascader, Flex } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Flex gap={10}>
+      <Cascader options={options} size='s' />
+      <Cascader options={options} size='m' />
+    </Flex>
+  </div>
+);
+
+export default App;
+```
+## 移入展开
+设置`expandTrigger`属性值为`hover`，鼠标移入展开
+`expandTrigger`默认值为`click`，鼠标点击展开
+```tsx
+
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Cascader
+    defaultValue={
+                    ['jiangsu', 'nanjing', 'zhonghuamen']
+                }
+    allowClear 
+    expandTrigger="hover"
+    options={options} 
+    onChange={onChange} 
+    placeholder="Please select" />
+  </div>
+);
+
+export default App;
+```
+## 禁用选项
+通过指定 `options` 里的 `disabled` 字段。
+```tsx
+
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            disabled: true,
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Cascader
+    defaultValue={
+                    ['jiangsu', 'nanjing', 'zhonghuamen']
+                }
+    options={options} 
+    onChange={onChange} 
+    placeholder="Please select" />
+  </div>
+);
+
+export default App;
+```
+## 选择即改变
+允许选择父选项时改变选择值，通过`changeOnSelect`控制
+```tsx
+
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+
+interface Option {
+  value: string;
+  label: string;
+  children?: Option[];
+}
+
+const options: Option[] = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const onChange= (value) => {
+};
+
+const App: React.FC = () => (
+  <div style={{ height: 100 }}>
+    <Cascader
+    defaultValue={
+                    ['jiangsu', 'nanjing', 'zhonghuamen']
+                }
+    allowClear 
+    options={options} 
+    onChange={onChange}
+    changeOnSelect={true}
+    placeholder="Please select" />
+  </div>
+);
+
+export default App;
+```
+## 多选
+一次性选择多个选项。
+通过设置`multiple`开启
+通过添加 `disableCheckbox` 属性,可选择具体某一个`checkbox`禁用 。
+```tsx
+import React from 'react';
+import { Cascader } from '@nan-design/react';
+function App(){
+    const options: Option[] = [
+    {
+        value: 'zhejiang',
+        label: 'Zhejiang',
+        children: [
+            {
+                value: 'hangzhou',
+                label: 'Hangzhou',
+                children: [
+                    {
+                        value: 'xihu',
+                        label: 'West Lake'
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        value: 'jiangsu',
+        label: 'Jiangsu',
+        children: [
+            {
+                value: 'nanjing',
+                label: 'Nanjing',
+                disableCheckbox: true,
+                children: [
+                    {
+                        value: 'zhonghuamen1',
+                        label: 'Zhong Hua Men1',
+                        children: [
+                            {
+                                value: '1',
+                                label: '2'
+                            }
+                        ]
+                    },
+                    {
+                        value: 'zhonghuamen2',
+                        label: 'Zhong Hua Men2'
+                    },
+                    {
+                        value: 'zhonghuamen3',
+                        label: 'Zhong Hua Men3'
+                    },
+                    {
+                        value: 'zhonghuamen4',
+                        label: 'Zhong Hua Men4'
+                    },
+                    {
+                        value: 'zhonghuamen5',
+                        label: 'Zhong Hua Men5'
+                    },
+                    {
+                        value: 'zhonghuamen6',
+                        label: 'Zhong Hua Men6'
+                    },
+                    {
+                        value: 'zhonghuamen7',
+                        label: 'Zhong Hua Men7'
+                    },
+                    {
+                        value: 'zhonghuamen8',
+                        label: 'Zhong Hua Men8'
+                    },
+                    {
+                        value: 'zhonghuamen9',
+                        label: 'Zhong Hua Men9'
+                    }
+                ]
+            },
+            {
+                value: 'suzhou',
+                label: 'Suzhou',
+                children: [
+                    {
+                        value: 's',
+                        label: 's'
+                    }
+                ]
+            }
+        ]
+    }
+];
+ const onChange = (value: Option['value'][][], option: Option[]) => {
+    };
+    return <div style={{height: 200}}>
+        <Cascader
+                options={options}
+                defaultValue={[
+                    ['jiangsu', 'nanjing', 'zhonghuamen5'],
+                    ['jiangsu', 'nanjing', 'zhonghuamen1']
+                ]}
+                onChange={onChange}
+                // expandTrigger="hover"
+                multiple={true}
+                // changeOnSelect
+            ></Cascader>
+    </div>
+}
+export default App;
+```
+

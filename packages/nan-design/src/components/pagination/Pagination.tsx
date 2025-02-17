@@ -11,6 +11,7 @@ import {
     ArrowDoubleRightIcon
 } from '@nan-design/icons';
 import classNames from 'classnames';
+import './style/index.scss';
 
 const Pagination: React.FC<PaginationProps> = (props) => {
     const {

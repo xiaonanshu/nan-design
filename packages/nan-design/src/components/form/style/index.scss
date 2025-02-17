@@ -17,12 +17,17 @@
 }
 
 .nan-form-item {
-    display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
 
+    &__content {
+        display: flex;
+    }
+
     &__label {
         position: relative;
+        display: flex;
+        align-items: center;
         min-width: 5em;
         text-align: justify;
         text-align-last: justify;
@@ -57,6 +62,7 @@
     }
 
     &__error {
+        margin-left: 5em;
         color: baseColor.$color-red;
     }
 }

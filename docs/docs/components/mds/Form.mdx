@@ -1,0 +1,190 @@
+# From表单
+## 基本使用
+```tsx
+import { Form, Input, Button } from '@nan-design/react';
+function APP(){
+    return (
+        <Form>
+            <Form.Item label="用户名">
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码">
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+    )
+}
+export default APP;
+```
+
+## 表单尺寸
+
+通过设置`size`属性可以改变表单内所有表单项的尺寸，不包括`Form.Item`内的`Input`组件
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+function APP(){
+    return (
+        <Flex align="center" vertical gap = {20}>
+        <Form size="s">
+            <Form.Item label="用户名">
+                <Input size="s" placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码">
+                <Input size="s" placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+        <Form size="m">
+            <Form.Item label="用户名">
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码">
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+        </Flex>
+    )
+}
+export default APP;
+```
+
+## 表单项
+通`过Form.Item`包裹表单项，可以设置表单项的label和校验规则
+
+设置`label`属性可以设置表单项的label
+
+需要设置`name`属性，才能进行表单校验以及数据提交
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+function APP(){
+    return (
+        <Form>
+            <Form.Item label="用户名">
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码">
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+    )
+}
+export default APP;
+```
+
+## 表单校验
+通过`rules`属性设置校验规则
+
+可以设置`validateTrigger`属性设置触发校验的方式，属性值以事件，如:`onChange`、`onBlur` 默认为`onBlur`
+
+注意：`Form.Item`内的`Input`组件需要设置`name`属性，才能正常进行表单校验
+
+采用第三方库`async-validator`进行表单校验，具体校验规则请参考:
+
+官方仓库：https://github.com/yiminghe/async-validator?tab=readme-ov-file#rules
+
+或
+
+中文翻译：https://blog.csdn.net/qq_63358859/article/details/137752446
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+function APP(){
+    return (
+        <Form>
+            <Form.Item label="用户名" name='username' rules={[{required: true, message: '请输入用户名'}]}>
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码" name='password' rules={[{required: true, message: '请输入密码'}]}>
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+    )
+}
+export default APP;
+```
+
+## 表单方法调用
+通过`ref`属性可以获取到`Form`组件的实例，通过实例调用方法
+方法包括：`validateField(name)`——单项校验，以校验项的`name`为参数、`validateAllFields()`——表单整体校验、`resetFields()`——重置表单、`setFieldValue(name, value)`——设置单项值、`getFieldValue(name)`——获取单项值、`getFieldsValue()`——获取表单所有值
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+import React from 'react';
+function APP(){
+    const formRef = React.useRef();
+    
+    return (
+        <>
+        <Form ref={formRef}>
+            <Form.Item label="用户名" name='username' rules={[{required: true, message: '请输入用户名'}]}>
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码" name='password' rules={[{required: true, message: '请输入密码'}]}>
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+        </Form>
+        <Flex gap={20}>
+            <Button onClick={() => formRef.current.validateField('username')}>校验用户名</Button>
+            <Button onClick={() => formRef.current.validateAllFields()}>校验所有</Button>
+            <Button onClick={() => formRef.current.resetFields()}>重置</Button>
+            <Button onClick={() => formRef.current.setFieldValue('username', '张三')}>设置用户名为张三</Button>
+            <Button onClick={() => console.log(formRef.current.getFieldsValue())}>获取所有值</Button>
+        </Flex>
+        </>
+    )
+}
+export default APP;
+```
+
+## 表单提交回调
+通过`onFinish`属性设置提交表单且数据验证成功后回调事件
+通过`onFinishFailed`属性设置提交表单且数据验证失败后回调事件
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+import React from 'react';
+function APP(){
+    const formRef = React.useRef();
+    
+    return (
+        <Form ref={formRef} onFinish={(values) => {console.log(values); alert("成功")}} onFinishFailed={(values, errors) => {console.log(values, errors); alert("失败")}}>
+            <Form.Item label="用户名" name='username' rules={[{required: true, message: '请输入用户名'}]}>
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码" name='password' rules={[{required: true, message: '请输入密码'}]}>
+                <Input placeholder="请输入密码"/>
+            </Form.Item>
+            <Button htmlType="submit">登录</Button>
+        </Form>
+    )
+}
+export default APP;
+```
+
+## 登录表单
+```tsx
+import { Form, Input, Button, Flex } from '@nan-design/react';
+import React from 'react';
+function APP(){
+    const formRef = React.useRef();
+    
+    return (
+        <Form ref={formRef} style={{width: 300}}>
+            <Form.Item label="用户名" name='username' rules={[{required: true, message: '请输入用户名'}]}>
+                <Input placeholder="请输入用户名"/>
+            </Form.Item>
+            <Form.Item label="密码" name='password' rules={[{required: true, message: '请输入密码'}]}>
+                <Input.Password placeholder="请输入密码"/>
+            </Form.Item>
+            <Form.Item>
+                <Flex justify="space-between">
+                    <a style={{fontSize:12}} href="#">忘记密码</a>
+                    <a href="#" style={{fontSize:12}}>去注册</a>
+                </Flex>
+            </Form.Item>
+            <Form.Item>
+                <Flex justify="center" gap={20}>
+                    <Button type="primary" htmlType='submit'>登录</Button>
+                </Flex>
+            </Form.Item>
+        </Form>
+    )
+}
+export default APP;
+```

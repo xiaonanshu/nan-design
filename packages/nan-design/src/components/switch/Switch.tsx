@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { SwitchProps } from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { useMergeState } from '../../utils/hooks/useMergeState';
+import './style/index.scss';
 
 const Switch: React.FC<SwitchProps> = (props) => {
     const {

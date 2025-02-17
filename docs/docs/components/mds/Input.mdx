@@ -1,0 +1,139 @@
+# Input输入框
+
+## 基本使用
+```tsx
+import React from 'react';
+import { Input } from '@nan-design/react';
+
+function App(){
+    return (
+        <Input placeholder="请输入"/>
+    )
+}
+
+export default App;
+```
+## 大小
+通过`size`设置大小，可选值为`'s'`、`'m'`、`'l'`、`'xl'` ，默认为`'m'`
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input size="s" placeholder="小"/>
+            <Input size="m" placeholder="中"/>
+            <Input size="l" placeholder="大"/>
+            <Input size="xl" placeholder="超大"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 前置/后置标签
+通过`prefix`和`suffix`设置前置/后置标签
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+import {PrimaryIcon, ViewOffIcon} from '@nan-design/icons';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input prefix={<PrimaryIcon/>} placeholder="前置标签"/>
+            <Input suffix={<ViewOffIcon/>} placeholder="后置标签"/>
+            <Input prefix={<PrimaryIcon/>} suffix={<ViewOffIcon/>} placeholder="前置后置标签"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 前缀/后缀
+通过`addonBefore`和`addonAfter`设置前缀/后缀
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input addonBefore="http://" placeholder="前缀"/>
+            <Input addonAfter=".com" placeholder="后缀" allowClear/>
+            <Input addonBefore="http://" addonAfter=".com" placeholder="前缀后缀"/>
+
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 一次性清除
+通过`allowClear`设置一次性清除
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input allowClear placeholder="一次性清除"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 自定义状态
+通过`status`设置状态，目前可选值为`'warning'`、`'error'`，除这两者状态，不建议使用此字段
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input status="warning" placeholder="警告状态"/>
+            <Input status="error" placeholder="错误状态"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 受控Input
+设置`value`后，成为受控Input，需要通过设置`onChange`来更新`value`，若不设置`onChange`，则无法输入
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+import React, { useState } from 'react';
+function App(){
+    const [value, setValue] = useState('默认值');
+    const [value2, setValue2] = useState('默认值');
+    return (
+        <Flex vertical gap={10}>
+            <Input value={value} onChange={(e) => setValue(e.target.value)} placeholder="受控Input"/>
+            <Input value={value2} placeholder="受控Input，无onChange"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 字数限制与计数
+通过`maxLength`设置字数限制，通过`showCount`设置是否显示字数计数
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input maxLength={10} showCount placeholder="字数限制与计数"/>
+        </Flex>
+    )
+}
+export default App;
+```
+
+## 密码框
+``` tsx
+import { Input, Flex } from '@nan-design/react';
+function App(){
+    return (
+        <Flex vertical gap={10}>
+            <Input.Password placeholder="密码框"/>
+        </Flex>
+    )
+}
+export default App;
+```
