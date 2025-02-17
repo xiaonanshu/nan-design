@@ -87,23 +87,25 @@ const FormItem: React.FC<FormItemProps> = (props) => {
     return (
         <>
             <div className={className}>
-                {label && (
-                    <div
-                        className={bem('label', {
-                            required: rules.some((item: RuleItem) => item['required'])
-                        })}
-                    >
-                        {label}
-                    </div>
-                )}
-                <div className={bem('box')}>
-                    <div className={bem('inner', { error: fields[name]?.errors.length > 0 })}>
-                        {finalChildren}
-                    </div>
-                    {fields[name]?.errors.length > 0 && (
-                        <div className={bem('error')}>{fields[name]?.errors[0].message}</div>
+                <div className={bem('content')}>
+                    {label && (
+                        <div
+                            className={bem('label', {
+                                required: rules.some((item: RuleItem) => item['required'])
+                            })}
+                        >
+                            {label}
+                        </div>
                     )}
+                    <div className={bem('box')}>
+                        <div className={bem('inner', { error: fields[name]?.errors.length > 0 })}>
+                            {finalChildren}
+                        </div>
+                    </div>
                 </div>
+                {fields[name]?.errors.length > 0 && (
+                    <div className={bem('error')}>{fields[name]?.errors[0].message}</div>
+                )}
             </div>
         </>
     );

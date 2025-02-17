@@ -5,6 +5,7 @@ import { useMergeState } from '../../utils/hooks/useMergeState';
 import { CleanFillIcon } from '@nan-design/icons';
 import { useEventListener } from '../../utils/hooks/useEventListener';
 import { resolveOnChange } from './utils';
+import './style/index.scss';
 
 const Input: React.FC<InputProp> = (prop) => {
     const {

@@ -2,6 +2,7 @@ import React from 'react';
 import { FlexProps } from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { isGap } from './constant';
+import './style/index.scss';
 
 const Flex: React.FC<FlexProps> = (props) => {
     const {

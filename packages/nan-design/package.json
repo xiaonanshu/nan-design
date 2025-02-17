@@ -1,6 +1,6 @@
 {
   "name": "@nan-design/react",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "nan-design react component library",
   "keywords": [
     "react",
@@ -16,17 +16,18 @@
     "url": "https://github.com/ZSmileL/nan-design/issues"
   },
   "scripts": {
-    "build": "vite build"
+    "build:vite": "vite build",
+    "build": "gulp -f ./src/scripts/index.ts"
   },
   "main": "",
   "module": "./dist/es/index.mjs",
   "exports": {
     ".": {
       "import": "./dist/es/index.mjs",
-      "types":"./dist/es/index.d.ts"
+      "types": "./dist/es/index.d.ts"
     },
     "./src/index": "./src/index.ts",
-    "./style": "./dist/es/style.css"
+    "./style": "./dist/es/styles/index.css"
   },
   "publishConfig": {
     "access": "public"

@@ -2,6 +2,7 @@ import React from 'react';
 import { ButtonBaseProps } from './interface';
 import { createCssSCope } from '../../utils/bem';
 import { isFunction } from '../../utils/helper';
+import './style/index.scss';
 
 const Button: React.FC<ButtonBaseProps> = (props) => {
     const {
