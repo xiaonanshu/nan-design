@@ -4,6 +4,7 @@ import { pluginPreview } from '@rspress/plugin-preview';
 
 export default defineConfig({
     plugins: [pluginPreview()],
+    base: '/nan-design/',
     root: path.join(__dirname, 'docs'),
     title: 'Nan Design',
     description: 'UI组件库',
