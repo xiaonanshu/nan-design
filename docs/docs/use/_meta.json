@@ -1,0 +1,14 @@
+[{
+    "type": "file",
+    "name": "mds/introduction",
+    "label": "Nan Design"
+},{
+    "type": "file",
+    "name": "mds/quickStart",
+    "label": "快速上手"
+},{
+    "type": "file",
+    "name": "mds/blackTheme",
+    "label": "暗黑模式"
+}
+]

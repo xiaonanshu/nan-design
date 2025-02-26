@@ -7,10 +7,10 @@ export default defineConfig({
     root: path.join(__dirname, 'docs'),
     title: 'Nan Design',
     description: 'UI组件库',
-    icon: '/rspress-icon.png',
+    icon: '/nan_design_icon.png',
     logo: {
-        light: '/rspress-light-logo.png',
-        dark: '/rspress-dark-logo.png'
+        light: '/nan_design_logo.png',
+        dark: '/nan_design_logo.png'
     },
     themeConfig: {
         socialLinks: [
