@@ -28,7 +28,10 @@ jobs:
               run: pnpm --filter @nan-design/docs install
 
             - name: Build
-              run: pnpm run doc:build
+              run: |
+                pnpm run build
+                pnpm run icons:build
+                pnpm run doc:build
 
             - name: Page Deploy
               uses: peaceiris/actions-gh-pages@v3
