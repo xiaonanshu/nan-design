@@ -18,6 +18,7 @@ export interface InputProp extends Omit<React.InputHTMLAttributes<HTMLElement>, 
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // 输入框内容变化时的回调
     onPressEnter?: () => void; // 按下Enter的回调
     onClear?: () => void; // 按下清除按钮的回调
+    style: React.CSSProperties;
 }
 
 export interface InputPasswordProp extends InputProp {

@@ -32,5 +32,15 @@
     "type": "file",
     "name": "mds/Form",
     "label": "Form"
+},
+{
+    "type": "file",
+    "name": "mds/Icon",
+    "label": "Icon图标"
+},
+{
+    "type": "file",
+    "name": "mds/VirtualList",
+    "label": "VirtualList"
 }
 ]

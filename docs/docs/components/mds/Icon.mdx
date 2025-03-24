@@ -1,0 +1,33 @@
+import { PackageManagerTabs } from '@theme';
+import Icons from '../Icons';
+
+# Icon图标
+语义化的矢量图形
+## 安装
+使用 npm 或 yarn 或 pnpm 安装。
+<PackageManagerTabs command="install @nan-design/icons" />
+
+## 使用
+在需要使用的组件中`import`引入，直接使用即可。
+
+<Icons/>
+
+### 实例
+可以设置`rotate`属性使图标旋转一定角度
+```tsx
+import {Flex} from '@nan-design/react';
+import {SuccessIcon, WarningIcon, PrimaryIcon, ErrorIcon, ArrowLeftIcon} from '@nan-design/icons';
+
+const App = ()=>{
+    return <Flex gap={10} style={{fontSize: 20}}>
+        <SuccessIcon />
+        <WarningIcon />
+        <PrimaryIcon />
+        <ErrorIcon />
+        <ArrowLeftIcon rotate={45} />
+    </Flex>
+}
+
+export default App;
+
+```

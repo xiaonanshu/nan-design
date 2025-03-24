@@ -7,4 +7,5 @@ export interface FlexProps {
     align?: Align; // 交叉轴对齐方式
     gap?: Gap | number | string; // 间隔
     children?: React.ReactNode;
+    style: React.CSSProperties;
 }
