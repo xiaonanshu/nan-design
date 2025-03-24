@@ -7,3 +7,4 @@ export * from './components/pagination';
 export * from './components/cascader';
 export * from './components/input';
 export * from './components/form';
+export * from './components/virtualList';

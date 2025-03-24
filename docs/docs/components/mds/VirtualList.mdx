@@ -1,0 +1,141 @@
+# VirtualList虚拟列表
+滚动加载无限长列表，能够提高数据量大时候长列表的性能。
+
+## 基本使用
+- `data`：指定数据源数组  
+- `height`：指定列表（即可视区域）高度    
+- `itemHeight`：子项等高模式下指定子项高度
+- `renderItem`：指定子项的渲染函数，接受2个参数`(item, index)`对应`data`中的一项
+- `requeestMpre`：指定异步加载数据的方法  
+- `itemKey`：指定作为子项key的值在`item`中对应的属性字段，
+- `gap`：指定子项的间隔（会被转化为上下padding，值为1/2 * gap）   
+- `onscroll`：指定滚动触发的事件
+- `fixedHeight`：指定是否为子项等高模式
+- `estimatedHeight`：不等高模式下，子项的预测高度，不宜过大或过小
+
+## 等高
+```tsx
+import React from 'react';
+import { VirtualList } from '@nan-design/react';
+import { List, Avatar } from 'antd';
+const LEN = 100;
+const fakeDataUrl =
+    'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
+const ContainerHeight = 400;
+
+const ListTest = () => {
+    const renderItem = (item, index) => {
+        return (
+            <List.Item style={{ height: heights[index] }}>
+                <List.Item.Meta
+                    avatar={<Avatar src={item.picture.large} />}
+                    title={<a href="javascript;">{item.name.last}</a>}
+                    description={item.email}
+                />
+                <div>Content</div>
+            </List.Item>
+        );
+    };
+    const [data, setData] = React.useState([]);
+    const [heights, setHeights] = React.useState([]);
+
+    const appendData = () => {
+        setTimeout(() => {
+            fetch(fakeDataUrl)
+                .then((res) => res.json())
+                .then((body) => {
+                    setData(data.concat(body.results));
+                    setHeights(
+                        heights.concat(
+                            body.results.map(() => {
+                                return (Math.random() * 2 + 1) * 40;
+                            })
+                        )
+                    );
+                });
+        }, 1000);
+    };
+
+    return (
+        <List>
+            <VirtualList
+                fixedHeight={true}
+                renderItem={renderItem}
+                height={ContainerHeight}
+                itemHeight={50}
+                data={data}
+                gap={20}
+                itemKey="email"
+                requestMore={appendData}
+                style={{ width: '200px', height: '200px' }}
+            ></VirtualList>
+        </List>
+    );
+};
+export default ListTest;
+```
+## 不等高
+```tsx
+import React from 'react';
+import { VirtualList } from '@nan-design/react';
+import { List, Avatar } from 'antd';
+const LEN = 100;
+const fakeDataUrl =
+    'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
+const ContainerHeight = 400;
+
+const ListTest = () => {
+    const renderItem = (item, index) => {
+        return (
+            <List.Item style={{ height: heights[index] }}>
+                <List.Item.Meta
+                    avatar={<Avatar src={item.picture.large} />}
+                    title={<a href="javascript;">{item.name.last}</a>}
+                    description={item.email}
+                />
+                <div>Content</div>
+            </List.Item>
+        );
+    };
+    const [data, setData] = React.useState([]);
+    const [heights, setHeights] = React.useState([]);
+
+    const appendData = () => {
+        setTimeout(() => {
+            fetch(fakeDataUrl)
+                .then((res) => res.json())
+                .then((body) => {
+                    setData(data.concat(body.results));
+                    setHeights(
+                        heights.concat(
+                            body.results.map(() => {
+                                return (Math.random() * 2 + 1) * 40;
+                            })
+                        )
+                    );
+                });
+        }, 1000);
+    };
+
+    return (
+        <List>
+            <VirtualList
+                fixedHeight={false}
+                renderItem={renderItem}
+                height={ContainerHeight}
+                itemHeight={50}
+                data={data}
+                gap={20}
+                itemKey="email"
+                requestMore={appendData}
+                style={{ width: '200px', height: '200px' }}
+            ></VirtualList>
+        </List>
+    );
+};
+export default ListTest;
+```
+
+## 注意
+请在使用时传入`itemKey`，这对应你传入的`data`中单项的一个属性，保证它是唯一的。
+或者选择在`renderItem`返回的元素中手动传入`key`值，不推荐使用`index`作为`key`
