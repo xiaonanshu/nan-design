@@ -24,8 +24,11 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
         multiple = false,
         options = [],
         placeholder = '请选择',
-        onChange
+        onChange,
+        ...restProps
     } = props;
+
+    const { loadData } = restProps;
 
     const innerRef = React.useRef<HTMLDivElement>(null);
     const optionsRef = React.useRef<HTMLDivElement>(null);
@@ -135,12 +138,13 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
         }
     };
 
+    const loadOption = React.useRef([null, 0]);
     /**
      * 设置展示的选项，
      * @param option
      * @param depth 层级 options最顶层option为1级，它们的直接子选项为2级，以此类推
      */
-    const addShowingOption = (option: T, depth: number) => {
+    const addShowingOption = async (option: T, depth: number) => {
         // 展示的最深层子选项，在它外层的要展示，在它里层的不展示，如果没有下一层就表示选中了某个值，这时要使它只有第一层的展示数据
         setSelected(option, depth);
         if (!multiple) {
@@ -149,16 +153,30 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
             }
         }
         const newShowingOptions: T[][] = showingOptions.slice(0, depth);
-        if (option.children && option.children.length > 0) {
-            newShowingOptions.push(option.children as T[]);
+        if (
+            loadData &&
+            !pending &&
+            (option.isLeaf === false || (option.children && option.children.length > 0))
+        ) {
+            console.log(1);
+            setPending(true);
+            loadOption.current = [option, depth];
+            await loadData?.([option]);
         } else {
-            changeHandle(
-                selected.current.map((item) => item.value),
-                selected.current
-            );
+            if (option.children && option.children.length > 0) {
+                newShowingOptions.push(option.children as T[]);
+            } else {
+                changeHandle(
+                    selected.current.map((item) => item.value),
+                    selected.current
+                );
+            }
+            setShowingOptions(newShowingOptions);
         }
-        setShowingOptions(newShowingOptions);
     };
+    React.useEffect(() => {
+        console.log(showingOptions, '111');
+    }, [showingOptions]);
 
     /**
      * inner框专属的显示与隐藏选项框逻辑
@@ -216,6 +234,16 @@ const Cascader = <T extends Option>(props: CascaderProp<T>) => {
     };
     type OptionTree = { [key: string]: OptionNode | null };
     const [curOptions, setCurOptions] = React.useState<OptionNode[]>([]);
+
+    const [pending, setPending] = React.useState(false);
+
+    React.useEffect(() => {
+        if (pending) {
+            console.log(loadOption.current);
+            addShowingOption(...loadOption.current);
+            setPending(false);
+        }
+    }, [options]);
     /**
      * multiple下 针对每一级获取选中的元素，options是当前展示的一层级元素。比如，第一级选项、点击第一级中的某个选项后会打开它的直接子选项，这就是第二级，以此类推
      * @param options
