@@ -13,4 +13,5 @@ export interface ButtonBaseProps {
     onClick?: React.MouseEventHandler<HTMLElement>; //点击事件
     icon?: React.ReactNode; //图标
     loadingText?: string; //加载中状态显示的文字
+    style?: React.CSSProperties;
 }
