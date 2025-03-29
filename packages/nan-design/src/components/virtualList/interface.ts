@@ -10,6 +10,7 @@ export interface VirtualListProps<T> {
     gap?: number; // 子元素间隔
     onscroll?: (e: React.UIEvent<HTMLDivElement>) => void; // 滚动事件
     fixedHeight?: boolean; //是否定高
+    style?: React.CSSProperties;
 }
 
 export interface VirtualListProProps<T> extends VirtualListProps<T> {

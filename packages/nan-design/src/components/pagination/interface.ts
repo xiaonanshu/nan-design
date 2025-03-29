@@ -12,6 +12,6 @@ interface PaginationProps {
     showTotal?: boolean; // 是否显示总页数
     onChange?: (page: number, pageSize: number) => void; // 页码或者每页条数改变时触发的回调
     pageSizeChange?: (pageSize: number) => void; // pageSize改变时触发的回调
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }
 export default PaginationProps;

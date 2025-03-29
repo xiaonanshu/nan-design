@@ -12,5 +12,5 @@ export interface SwitchProps {
     loading?: boolean; // 是否加载中
     onChange?: (checked: boolean) => void; // 开关状态改变时执行
     onClick?: (checked: boolean, e: React.MouseEvent<HTMLButtonElement>) => void; // 点击时执行
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }

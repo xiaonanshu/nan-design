@@ -10,7 +10,7 @@ interface CascaderPropBase<T extends { value: string | number }> {
     options?: T[]; // 可选项数据
     placeholder?: string; // 未选择时的展示文字
     onChange?: (value: any, selectedOptions: any) => void; // 选项改变的回调
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }
 
 interface SingleSelectCascaderProp<T extends { value: string | number }>
