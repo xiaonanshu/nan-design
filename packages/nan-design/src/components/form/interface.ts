@@ -10,7 +10,7 @@ export interface FormProps {
     size?: 's' | 'm';
     onFinish?: (values: Record<string, any>) => void; //提交表单且数据验证成功后回调事件
     onFinishFailed?: (values: Record<string, any>, errors: Record<string, ValidateError[]>) => void; //提交表单且数据验证失败后回调事件
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }
 
 export interface FormItemProps {
@@ -22,7 +22,7 @@ export interface FormItemProps {
     trigger?: string; //设置收集字段值变更的时机
     rules?: RuleItem[]; //校验规则，设置字段的校验逻辑
     validateTrigger?: string; //设置字段校验的时机
-    style: React.CSSProperties;
+    style?: React.CSSProperties;
 }
 
 // 表单状态

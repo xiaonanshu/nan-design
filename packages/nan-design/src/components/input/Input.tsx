@@ -36,7 +36,7 @@ const Input: React.FC<InputProp> = (prop) => {
     const valueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
         if (inputRef.current) {
-            resolveOnChange(inputRef.current, e, onChange);
+            resolveOnChange(inputRef.current, e, onChange, e.target.value);
         }
     };
 
