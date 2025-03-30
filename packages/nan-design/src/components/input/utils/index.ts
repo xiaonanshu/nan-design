@@ -4,11 +4,18 @@ import React from 'react';
  * @param target
  * @param Event
  */
-const cloneEvent = (target: HTMLInputElement, event: React.ChangeEvent | React.MouseEvent) => {
-    const currentTarget = target.cloneNode(true);
+const cloneEvent = (
+    target: HTMLInputElement,
+    event: React.ChangeEvent | React.MouseEvent,
+    value: any
+) => {
+    const currentTarget = target.cloneNode(true) as HTMLInputElement;
     const newEvent = Object.create(event, {
-        target: { value: currentTarget }
+        target: { value: currentTarget },
+        currentTarget: { value: currentTarget }
     });
+
+    currentTarget.value = value;
 
     return newEvent;
 };
@@ -23,11 +30,19 @@ const cloneEvent = (target: HTMLInputElement, event: React.ChangeEvent | React.M
 export const resolveOnChange = <E extends HTMLInputElement>(
     targetElement: E,
     e: React.ChangeEvent | React.MouseEvent,
-    onChange: undefined | ((event: React.ChangeEvent<E>) => void)
+    onChange: undefined | ((event: React.ChangeEvent<E>) => void),
+    targetValue?: string
 ) => {
     if (!onChange) {
         return;
     }
-    const event = cloneEvent(targetElement, e);
+    let event = e;
+    if (e.type === 'click') {
+        event = cloneEvent(targetElement, e, '');
+        onChange(event as React.ChangeEvent<E>);
+        return;
+    }
+
+    event = cloneEvent(targetElement, e, targetValue);
     onChange(event as React.ChangeEvent<E>);
 };

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
 // 合并固定值与默认值状态
 export const useMergeState = <T>(value: T | undefined, defaultValue: T) => {
@@ -14,7 +14,7 @@ export const useMergeState = <T>(value: T | undefined, defaultValue: T) => {
         [isControlled]
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (isControlled) {
             setState(value);
         }
