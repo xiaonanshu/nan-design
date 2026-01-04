@@ -1,4 +1,4 @@
-import { Pagination } from '@nan-design/react';
+import { Pagination } from '@nan-design/react/src/index';
 
 const PaginationCom = () => {
     return (

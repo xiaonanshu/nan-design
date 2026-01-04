@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { DeleteIcon } from '@nan-design/icons/src/index';
 import { FormRef } from '../../packages/nan-design/src/components/form/interface';
 import CascaderCom from './components/Cascader';
+import PaginationCom from './components/Pagination';
 import List from './components/List';
 import List2 from './components/List/list2';
 
@@ -63,7 +64,8 @@ function App() {
         //     </F>
         // <CascaderCom></CascaderCom>
         // </div>
-        <List></List>
+        // <List></List>
+        <PaginationCom></PaginationCom>
         // <List2></List2>
     );
 }

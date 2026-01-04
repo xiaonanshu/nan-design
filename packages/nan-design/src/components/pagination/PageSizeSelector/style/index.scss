@@ -15,6 +15,9 @@
     }
 
     &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 7em;
         height: 2.3em;
         line-height: 2.3em;
